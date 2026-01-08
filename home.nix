@@ -83,7 +83,7 @@
       bar = {
         position = "top";
         monitors = [];
-        density = "default";
+        density = "compact";
         showOutline = false;
         showCapsule = true;
         capsuleOpacity = 1;
