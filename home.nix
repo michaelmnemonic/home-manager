@@ -78,7 +78,7 @@
   programs.noctalia-shell = {
     enable = true;
     settings = {
-      settingsVersion = 0;
+      settingsVersion = 37;
       colorSchemes.predefinedScheme = "Monochrome";
       bar = {
         position = "top";
