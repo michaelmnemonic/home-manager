@@ -46,6 +46,8 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+
+    # Niri configuration
     ".config/niri/config.kdl".source = dotfiles/config.kdl;
 
     # # You can also set the file content immediately.
