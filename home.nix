@@ -134,6 +134,9 @@
           ];
         };
       };
+      dock = {
+                enabled = false;
+      };
     };
   };
 
