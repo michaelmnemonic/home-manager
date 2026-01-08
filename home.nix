@@ -75,7 +75,67 @@
   };
 
   # Manager noctalia-shell
-  programs.noctalia-shell.enable = true;
+  programs.noctalia-shell = {
+    enable = true;
+    settings = {
+      settingsVersion = 0;
+      colorSchemes.predefinedScheme = "Monochrome";
+      bar = {
+        position = "top";
+        monitors = [];
+        density = "default";
+        showOutline = false;
+        showCapsule = true;
+        capsuleOpacity = 1;
+        backgroundOpacity = 1.0;
+        useSeparateOpacity = false;
+        floating = false;
+        marginVertical = 0.25;
+        marginHorizontal = 0.25;
+        outerCorners = false;
+        exclusive = true;
+        widgets = {
+          left = [
+            {
+              id = "Workspace";
+            }
+          ];
+          center = [
+            {
+              formatHorizontal = "HH:mm   dd.MM";
+              formatVertical = "HH mm";
+              id = "Clock";
+              useMonospacedFont = true;
+              usePrimaryColor = true;
+            }
+          ];
+          right = [
+            {
+              id = "ScreenRecorder";
+            }
+            {
+              id = "Tray";
+            }
+            {
+              id = "NotificationHistory";
+            }
+            {
+              id = "Battery";
+            }
+            {
+              id = "Volume";
+            }
+            {
+              id = "Brightness";
+            }
+            {
+              id = "SessionMenu";
+            }
+          ];
+        };
+      };
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
