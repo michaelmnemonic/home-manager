@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  noctalia,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "maik";
@@ -70,6 +73,9 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+
+  # Manager noctalia-shell
+  programs.noctalia-shell.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
