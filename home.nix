@@ -82,13 +82,31 @@
     enable = true;
     settings = {
       settingsVersion = 37;
-      colorSchemes.predefinedScheme = "Monochrome";
+      colors = {
+        # you must set ALL of these
+        mError = "#e78284";
+        mOnError = "#111111";
+        mOnPrimary = "#ffffff";
+        mOnSecondary = "#ffffff";
+        mOnSurface = "#000000";
+        mOnSurfaceVariant = "#ffffff";
+        mOnTertiary = "#111111";
+        mOnHover = "#ffffff";
+        mOutline = "#ffffff";
+        mPrimary = "#ffffff";
+        mSecondary = "#ffffff";
+        mShadow = "#000000";
+        mSurface = "#000000";
+        mHover = "#ffffff";
+        mSurfaceVariant = "#ffffff";
+        mTertiary = "#cccccc";
+      };
       bar = {
         position = "top";
         monitors = [];
         density = "compact";
         showOutline = false;
-        showCapsule = true;
+        showCapsule = false;
         capsuleOpacity = 1;
         backgroundOpacity = 1.0;
         useSeparateOpacity = false;
