@@ -98,6 +98,7 @@
           left = [
             {
               id = "Workspace";
+              labelMode = "none";
             }
           ];
           center = [
@@ -135,7 +136,7 @@
         };
       };
       dock = {
-                enabled = false;
+        enabled = false;
       };
     };
   };
