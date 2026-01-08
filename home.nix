@@ -138,6 +138,9 @@
       dock = {
         enabled = false;
       };
+      location = {
+        name = "München, Deutschland";
+      };
     };
   };
 
