@@ -60,6 +60,9 @@
     ".config/niri/config.kdl".source = dotfiles/config.kdl;
     ".config/niri/keymap".source = dotfiles/keymap;
 
+    # Unread mail notifications
+    ".config/goimapnotify/goimapnotify.yaml".source = dotfiles/goimapnotify/goimapnotify.yaml;
+
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
