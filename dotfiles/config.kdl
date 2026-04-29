@@ -283,7 +283,7 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 
 spawn-at-startup "nix" "run" "github:NixOS/nixpkgs#voxtype" "--" "daemon"
-spawn-at-startup "nix" "run" "github:prankstr/vibepanel"
+spawn-at-startup "vibepanel"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
