@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  noctalia,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -75,94 +74,6 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-  };
-
-  # Manager noctalia-shell
-  programs.noctalia-shell = {
-    enable = true;
-    settings = {
-      settingsVersion = 37;
-      colors = {
-        # you must set ALL of these
-        mError = "#e78284";
-        mOnError = "#111111";
-        mOnPrimary = "#ffffff";
-        mOnSecondary = "#ffffff";
-        mOnSurface = "#000000";
-        mOnSurfaceVariant = "#ffffff";
-        mOnTertiary = "#111111";
-        mOnHover = "#ffffff";
-        mOutline = "#ffffff";
-        mPrimary = "#ffffff";
-        mSecondary = "#ffffff";
-        mShadow = "#000000";
-        mSurface = "#000000";
-        mHover = "#ffffff";
-        mSurfaceVariant = "#ffffff";
-        mTertiary = "#cccccc";
-      };
-      bar = {
-        position = "top";
-        monitors = [];
-        density = "compact";
-        showOutline = false;
-        showCapsule = false;
-        capsuleOpacity = 1;
-        backgroundOpacity = 1.0;
-        useSeparateOpacity = false;
-        floating = false;
-        marginVertical = 0.25;
-        marginHorizontal = 0.25;
-        outerCorners = false;
-        exclusive = true;
-        widgets = {
-          left = [
-            {
-              id = "Workspace";
-              labelMode = "none";
-            }
-          ];
-          center = [
-            {
-              formatHorizontal = "HH:mm   dd.MM";
-              formatVertical = "HH mm";
-              id = "Clock";
-              useMonospacedFont = true;
-              usePrimaryColor = true;
-            }
-          ];
-          right = [
-            {
-              id = "ScreenRecorder";
-            }
-            {
-              id = "Tray";
-            }
-            {
-              id = "NotificationHistory";
-            }
-            {
-              id = "Battery";
-            }
-            {
-              id = "Volume";
-            }
-            {
-              id = "Brightness";
-            }
-            {
-              id = "SessionMenu";
-            }
-          ];
-        };
-      };
-      dock = {
-        enabled = false;
-      };
-      location = {
-        name = "München, Deutschland";
-      };
-    };
   };
 
   # Let Home Manager install and manage itself.
