@@ -23,8 +23,9 @@
   home.packages = with pkgs; [
     elephant
     goimapnotify
-    voxtype
+    thunderbird
     vibepanel.packages.${pkgs.stdenv.hostPlatform.system}.vibepanel
+    voxtype
     walker
 
     # # Adds the 'hello' command to your environment. It prints a friendly
