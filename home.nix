@@ -24,6 +24,7 @@
     elephant
     goimapnotify
     libnotify
+    oo7
     thunderbird
     vibepanel.packages.${pkgs.stdenv.hostPlatform.system}.vibepanel
     voxtype
