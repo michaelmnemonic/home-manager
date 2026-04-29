@@ -23,6 +23,7 @@
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [./home.nix];
+        extraSpecialArgs = { inherit vibepanel; };
       };
   in {
     homeConfigurations = {
