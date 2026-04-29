@@ -50,6 +50,7 @@
 
     # Niri configuration
     ".config/niri/config.kdl".source = dotfiles/config.kdl;
+    ".config/niri/keymap".source = dotfiles/keymap;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

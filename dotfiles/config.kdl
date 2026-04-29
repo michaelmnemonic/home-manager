@@ -5,23 +5,14 @@
 
 prefer-no-csd
 
-environment {
-    // Set display variable - note that this assumes xwayland-satellite binds to ":0" which is not guaranteed (but should work for single user session)
-    DISPLAY ":0"
-}
-
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     keyboard {
         xkb {
-            // You can set rules, model, layout, variant and options.
-            // For more information, see xkeyboard-config(7).
-
-            // For example:
-            layout "de"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            //layout "de"
+            file "~/.config/niri/keymap"
         }
     }
 
@@ -125,6 +116,16 @@ cursor {
     xcursor-theme "Adwaita"
     xcursor-size 24
 }
+
+xwayland-satellite {
+    // off
+    path "xwayland-satellite"
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -280,6 +281,9 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
+
+spawn-at-startup "nix" "run" "github:NixOS/nixpkgs#voxtype" "--" "daemon"
+spawn-at-startup "nix" "run" "github:prankstr/vibepanel"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -448,10 +452,15 @@ window-rule {
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-//window-rule {
-//    geometry-corner-radius 12
-//    clip-to-geometry true
-//}
+window-rule {
+    geometry-corner-radius 3
+    clip-to-geometry true
+}
+
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -469,9 +478,9 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return { spawn "alacritty"; }
-    Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Mod+L { spawn "hyprlock"; }
+    Mod+Return { spawn "ghostty"; }
+    Mod+Space { spawn "walker"; }
+    Mod+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -479,13 +488,13 @@ binds {
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
-    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioMute        allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
 
-    XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
 
     Mod+Q { close-window; }
 
@@ -701,9 +710,12 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 
-    Mod+Z { spawn "zeditor"; }
+    //Mod+Z { spawn "zeditor"; }
     Mod+B { spawn "firefox"; }
     Mod+E { spawn "nautilus"; }
     Ctrl+Alt+K { spawn "keepassxc"; }
     Ctrl+Shift+Escape { spawn "resources"; }
+
+    F23 { spawn "nix" "run" "github:NixOS/nixpkgs#voxtype" "--" "record" "toggle"; }
+    Mod+Z { spawn "nix" "run" "github:NixOS/nixpkgs#voxtype" "--" "record" "toggle"; }
 }
