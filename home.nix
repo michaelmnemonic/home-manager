@@ -93,6 +93,22 @@
   # Services
   services.syncthing.enable = true;
 
+  # Notify on new mail
+  systemd.user.services.goimapnotify = {
+    Unit = {
+      Description = "Notify on new mail";
+      After = "network.target";
+    };
+    Service = {
+      ExecStart = "${pkgs.goimapnotify}/bin/goimapnotify -conf %h/.config/goimapnotify/goimapnotify.yaml";
+      Restart = "always";
+      RestartSec = "10";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
