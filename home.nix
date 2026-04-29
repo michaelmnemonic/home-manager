@@ -22,6 +22,7 @@
   # environment.
   home.packages = with pkgs; [
     elephant
+    goimapnotify
     voxtype
     vibepanel.packages.${pkgs.stdenv.hostPlatform.system}.vibepanel
     walker
