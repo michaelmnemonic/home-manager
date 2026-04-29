@@ -19,23 +19,14 @@
     home-manager,
     noctalia,
     ...
-  }: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    homeConfigurations."maik" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-
-      # Specify your home configuration modules here, for example,
-      # the path to your home.nix.
+  }: {
+    homeConfigurations."maik" =
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${builtins.currentSystem};
       modules = [
         ./home.nix
         noctalia.homeModules.default
       ];
-
-      # Optionally use extraSpecialArgs
-      # to pass through arguments to home.nix
-      extraSpecialArgs = {inherit noctalia;};
     };
   };
 }
