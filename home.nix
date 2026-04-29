@@ -23,6 +23,7 @@
   home.packages = with pkgs; [
     elephant
     goimapnotify
+    libnotify
     thunderbird
     vibepanel.packages.${pkgs.stdenv.hostPlatform.system}.vibepanel
     voxtype
