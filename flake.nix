@@ -7,6 +7,10 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:yaxitech/ragenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +30,7 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
-        default = pkgs.mkShell {packages = [pkgs.alejandra];};
+        default = pkgs.mkShell {packages = with pkgs; [nil alejandra];};
       }
     );
 
