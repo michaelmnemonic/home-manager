@@ -129,6 +129,8 @@
     enable = true;
     profiles = {
       default = {
+        enableUpdateCheck = false;
+        enableExtensionUpdateCheck = false;
         userSettings = {
           # This property will be used to generate settings.json:
           # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
