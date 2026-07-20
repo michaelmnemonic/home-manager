@@ -1,33 +1,39 @@
 {
-  description = "Home Manager configuration of maik";
+  description = "Home Manager configuration";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    vibepanel = {
-      url = "github:prankstr/vibepanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = {
     nixpkgs,
     home-manager,
-    vibepanel,
     ...
-  }: let
-    mkHome = system:
-      home-manager.lib.homeManagerConfiguration {
+  }: {
+    devShells = nixpkgs.lib.genAttrs ["aarch64-linux" "x86_64-linux"] (
+      system: let
         pkgs = nixpkgs.legacyPackages.${system};
-        modules = [./home.nix];
-        extraSpecialArgs = { inherit vibepanel; };
-      };
-  in {
+      in {
+        default = pkgs.mkShell {packages = [pkgs.alejandra];};
+      }
+    );
+
     homeConfigurations = {
-      "maik@charon" = mkHome "aarch64-linux";
+      "maik@charon" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."aarch64-linux";
+        modules = [./hosts/charon.nix];
+        extraSpecialArgs = {
+        };
+      };
+      "maik@pluto" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [./hosts/pluto.nix];
+        extraSpecialArgs = {
+        };
+      };
     };
   };
 }
