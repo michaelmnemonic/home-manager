@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.username = "maik";
   home.homeDirectory = "/home/maik";
 
@@ -120,6 +124,54 @@
       };
     };
   };
+  # Manager VS Code
+  programs.vscode = {
+    enable = true;
+    profiles = {
+      default = {
+        userSettings = {
+          # This property will be used to generate settings.json:
+          # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
+          "chat.disableAIFeatures" = true;
+          "chat.titleBar.signIn.enabled" = false;
+          "editor.formatOnSave" = true;
+          "window.commandCenter" = false;
+          "window.menuBarVisibility" = "hidden";
+          "window.titleBarStyle" = "native";
+          "workbench.colorTheme" = "Light 2026";
+          "workbench.layoutControl.enabled" = false;
+          "workbench.startupEditor" = "none";
+        };
+        extensions = with pkgs.vscode-marketplace; [
+          mkhl.direnv
+          saoudrizwan.claude-dev
+        ];
+      };
+      nix = {
+        userSettings = {
+          # This property will be used to generate settings.json:
+          # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
+          "chat.disableAIFeatures" = true;
+          "chat.titleBar.signIn.enabled" = false;
+          "editor.formatOnSave" = true;
+          "window.commandCenter" = false;
+          "workbench.colorTheme" = "Light 2026";
+          "workbench.layoutControl.enabled" = false;
+          "workbench.startupEditor" = "none";
+        };
+        extensions = with pkgs.vscode-marketplace; [
+          mkhl.direnv
+          saoudrizwan.claude-dev
+          jnoortheen.nix-ide
+        ];
+      };
+    };
+  };
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "vscode"
+    ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
