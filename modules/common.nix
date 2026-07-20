@@ -142,7 +142,7 @@
           "workbench.layoutControl.enabled" = false;
           "workbench.startupEditor" = "none";
         };
-        extensions = with pkgs.vscode-marketplace; [
+        extensions = with pkgs.vscode-marketplace-release; [
           mkhl.direnv
           saoudrizwan.claude-dev
         ];
@@ -159,7 +159,7 @@
           "workbench.layoutControl.enabled" = false;
           "workbench.startupEditor" = "none";
         };
-        extensions = with pkgs.vscode-marketplace; [
+        extensions = with pkgs.vscode-marketplace-release; [
           mkhl.direnv
           saoudrizwan.claude-dev
           jnoortheen.nix-ide
