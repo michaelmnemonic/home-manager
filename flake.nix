@@ -49,6 +49,13 @@
           ./hosts/pluto.nix
         ];
       };
+      "maik@styx" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [
+          vscodeExtensionsOverlay
+          ./hosts/styx.nix
+        ];
+      };
     };
   };
 }
