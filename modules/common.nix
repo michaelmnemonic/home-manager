@@ -175,6 +175,16 @@
     };
   };
 
+  programs.kodi = {
+    enable = true;
+    package = pkgs.kodi-wayland.withPackages (
+      kodiPkgs:
+        with pkgs; [
+          python312Packages.pillow
+        ]
+    );
+  };
+
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "vscode"
