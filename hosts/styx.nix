@@ -16,4 +16,7 @@
     key = config.age.secrets."syncthing_styx_key.pem".path;
     folders = ["Bilder" "Bücher" "Dokumente" "Manga" "Musik"];
   };
+
+  # Run syncthing on efficiency cores
+  config.systemd.user.services.syncthing.Service.AllowedCPUs = "4-7";
 }
