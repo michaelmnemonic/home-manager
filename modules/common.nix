@@ -137,6 +137,7 @@
           "chat.disableAIFeatures" = true;
           "chat.titleBar.signIn.enabled" = false;
           "editor.formatOnSave" = true;
+          "git.useIntegratedAskPass" = false;
           "window.commandCenter" = false;
           "window.menuBarVisibility" = "hidden";
           "window.titleBarStyle" = "native";
@@ -156,6 +157,7 @@
           "chat.disableAIFeatures" = true;
           "chat.titleBar.signIn.enabled" = false;
           "editor.formatOnSave" = true;
+          "git.useIntegratedAskPass" = false;
           "window.commandCenter" = false;
           "workbench.colorTheme" = "Light 2026";
           "workbench.layoutControl.enabled" = false;
