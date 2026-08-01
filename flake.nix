@@ -17,6 +17,7 @@
     };
   };
   outputs = {
+    agenix,
     nixpkgs,
     nix-vscode-extensions,
     home-manager,
@@ -30,7 +31,7 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
-        default = pkgs.mkShell {packages = with pkgs; [nil alejandra];};
+        default = pkgs.mkShell {packages = with pkgs; [nil alejandra agenix.packages.x86_64-linux.default];};
       }
     );
 
@@ -54,6 +55,7 @@
         modules = [
           vscodeExtensionsOverlay
           ./hosts/styx.nix
+          agenix.homeManagerModules.default
         ];
       };
     };

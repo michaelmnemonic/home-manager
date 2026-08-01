@@ -22,6 +22,9 @@
     "honda" = {
       id = "7T76EGY-KYOXTKG-A7P5TD7-5CEG4IT-6K2E5RU-VCRCDC6-Z6IVPN5-KVNJEQN";
     };
+    "styx" = {
+      id = "BPU42Q4-ROMKNND-JFJVACN-AQTHO5R-7EKJKBM-QRZX6VX-KXPBNBT-7VKUYAH";
+    };
   };
 
   # Registry of all known Syncthing folders
@@ -29,27 +32,27 @@
     "Bilder" = {
       id = "qgzgt-2xman";
       path = "~/Bilder";
-      devices = ["orpheus" "pluto" "juno"];
+      devices = ["orpheus" "pluto" "juno" "styx"];
     };
     "Bücher" = {
       id = "zmvzx-wr6md";
       path = "~/Bücher";
-      devices = ["orpheus" "pluto" "juno"];
+      devices = ["orpheus" "pluto" "juno" "styx"];
     };
     "Dokumente" = {
       id = "eznhn-uejrh";
       path = "~/Dokumente";
-      devices = ["orpheus" "pluto" "juno"];
+      devices = ["orpheus" "pluto" "juno" "styx"];
     };
     "Manga" = {
       id = "xeplb-hobg3";
       path = "~/Manga";
-      devices = ["orpheus" "pluto" "juno"];
+      devices = ["orpheus" "pluto" "juno" "styx"];
     };
     "Musik" = {
       id = "kcxtv-v5v5u";
       path = "~/Musik";
-      devices = ["orpheus" "jupiter" "pluto" "juno" "honda"];
+      devices = ["orpheus" "jupiter" "pluto" "juno" "honda" "styx"];
     };
     "Serien" = {
       id = "ooxu-xaev4";
