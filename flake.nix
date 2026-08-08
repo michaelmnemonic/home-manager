@@ -15,12 +15,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    t3code = {
+      url = "github:michaelmnemonic/t3code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     agenix,
     nixpkgs,
     nix-vscode-extensions,
     home-manager,
+    t3code,
     ...
   }: let
     vscodeExtensionsOverlay = {
@@ -45,6 +50,7 @@
       };
       "maik@pluto" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = {inherit t3code;};
         modules = [
           vscodeExtensionsOverlay
           ./hosts/pluto.nix
