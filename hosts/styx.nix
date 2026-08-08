@@ -1,5 +1,9 @@
-{config, ...}: {
+{pkgs, config, t3code, ...}: {
   imports = [../modules/common.nix ../modules/syncthing.nix];
+
+  config.home.packages = [
+    t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
+  ];
 
   config.age = {
     identityPaths = ["/home/maik/.ssh/id_ed25519" "/home/maik/.config/home-manager/secrets/age.key"];

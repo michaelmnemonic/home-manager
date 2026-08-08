@@ -58,6 +58,7 @@
       };
       "maik@styx" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = {inherit t3code;};
         modules = [
           vscodeExtensionsOverlay
           ./hosts/styx.nix
