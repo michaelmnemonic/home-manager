@@ -1,11 +1,11 @@
 {pkgs, config, t3code, ...}: {
   imports = [../modules/common.nix ../modules/syncthing.nix];
 
-  config.home.packages = [
+  home.packages = [
     t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
   ];
 
-  config.age = {
+  age = {
     identityPaths = ["/home/maik/.ssh/id_ed25519" "/home/maik/.config/home-manager/secrets/age.key"];
     secrets = {
       "syncthing_styx_cert.pem".file = ../secrets/syncthing_styx_cert.pem.age;
@@ -13,7 +13,7 @@
     };
   };
 
-  config.universe.syncthing = {
+  universe.syncthing = {
     enable = true;
     device = "styx";
     cert = config.age.secrets."syncthing_styx_cert.pem".path;
@@ -22,5 +22,5 @@
   };
 
   # Run syncthing on efficiency cores
-  config.systemd.user.services.syncthing.Service.AllowedCPUs = "4-7";
+  systemd.user.services.syncthing.Service.AllowedCPUs = "4-7";
 }
