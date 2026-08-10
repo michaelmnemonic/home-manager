@@ -1,4 +1,8 @@
-{pkgs, t3code, ...}: {
+{
+  pkgs,
+  t3code,
+  ...
+}: {
   imports = [../modules/common.nix];
 
   home.packages = [

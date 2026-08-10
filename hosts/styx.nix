@@ -1,4 +1,9 @@
-{pkgs, config, t3code, ...}: {
+{
+  pkgs,
+  config,
+  t3code,
+  ...
+}: {
   imports = [../modules/common.nix ../modules/syncthing.nix];
 
   home.packages = [
