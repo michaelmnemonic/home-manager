@@ -137,6 +137,7 @@
           "chat.disableAIFeatures" = true;
           "chat.titleBar.signIn.enabled" = false;
           "editor.formatOnSave" = true;
+          "editor.wordWrap" = "wordWrapColumn";
           "git.useIntegratedAskPass" = false;
           "window.commandCenter" = false;
           "window.menuBarVisibility" = "hidden";
@@ -157,16 +158,17 @@
           "chat.disableAIFeatures" = true;
           "chat.titleBar.signIn.enabled" = false;
           "editor.formatOnSave" = true;
+          "editor.wordWrap" = "wordWrapColumn";
           "git.useIntegratedAskPass" = false;
-          "window.commandCenter" = false;
-          "workbench.colorTheme" = "Light 2026";
-          "workbench.layoutControl.enabled" = false;
-          "workbench.startupEditor" = "none";
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nil";
           "nix.serverSettings" = {
             nil.formatting.command = ["alejandra"];
           };
+          "window.commandCenter" = false;
+          "workbench.colorTheme" = "Light 2026";
+          "workbench.layoutControl.enabled" = false;
+          "workbench.startupEditor" = "none";
         };
         extensions = with pkgs.vscode-marketplace-release; [
           mkhl.direnv
