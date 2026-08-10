@@ -124,57 +124,49 @@
       };
     };
   };
-  # Manager VS Code
-  programs.vscode = {
+  # Manage VS Code
+  programs.vscode = let
+    commonSettings = {
+      # This property will be used to generate settings.json:
+      # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
+      "chat.disableAIFeatures" = true;
+      "chat.titleBar.signIn.enabled" = false;
+      "editor.formatOnSave" = true;
+      "editor.wordWrap" = "wordWrapColumn";
+      "git.useIntegratedAskPass" = false;
+      "window.commandCenter" = false;
+      "window.menuBarVisibility" = "hidden";
+      "window.titleBarStyle" = "native";
+      "workbench.colorTheme" = "Light 2026";
+      "workbench.layoutControl.enabled" = false;
+      "workbench.startupEditor" = "none";
+    };
+    commonExtensions = with pkgs.vscode-marketplace-release; [
+      mkhl.direnv
+      saoudrizwan.claude-dev
+    ];
+  in {
     enable = true;
     profiles = {
       default = {
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
-        userSettings = {
-          # This property will be used to generate settings.json:
-          # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
-          "chat.disableAIFeatures" = true;
-          "chat.titleBar.signIn.enabled" = false;
-          "editor.formatOnSave" = true;
-          "editor.wordWrap" = "wordWrapColumn";
-          "git.useIntegratedAskPass" = false;
-          "window.commandCenter" = false;
-          "window.menuBarVisibility" = "hidden";
-          "window.titleBarStyle" = "native";
-          "workbench.colorTheme" = "Light 2026";
-          "workbench.layoutControl.enabled" = false;
-          "workbench.startupEditor" = "none";
-        };
-        extensions = with pkgs.vscode-marketplace-release; [
-          mkhl.direnv
-          saoudrizwan.claude-dev
-        ];
+        userSettings = commonSettings;
+        extensions = commonExtensions;
       };
       nix = {
-        userSettings = {
-          # This property will be used to generate settings.json:
-          # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
-          "chat.disableAIFeatures" = true;
-          "chat.titleBar.signIn.enabled" = false;
-          "editor.formatOnSave" = true;
-          "editor.wordWrap" = "wordWrapColumn";
-          "git.useIntegratedAskPass" = false;
-          "nix.enableLanguageServer" = true;
-          "nix.serverPath" = "nil";
-          "nix.serverSettings" = {
-            nil.formatting.command = ["alejandra"];
+        userSettings =
+          commonSettings
+          // {
+            "nix.enableLanguageServer" = true;
+            "nix.serverPath" = "nil";
+            "nix.serverSettings" = {
+              nil.formatting.command = ["alejandra"];
+            };
           };
-          "window.commandCenter" = false;
-          "workbench.colorTheme" = "Light 2026";
-          "workbench.layoutControl.enabled" = false;
-          "workbench.startupEditor" = "none";
-        };
-        extensions = with pkgs.vscode-marketplace-release; [
-          mkhl.direnv
-          saoudrizwan.claude-dev
-          jnoortheen.nix-ide
-        ];
+        extensions =
+          commonExtensions
+          ++ [pkgs.vscode-marketplace-release.jnoortheen.nix-ide];
       };
     };
   };
