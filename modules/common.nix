@@ -124,6 +124,17 @@
       };
     };
   };
+  # Manage Zed
+  programs.zed-editor = {
+    enable = true;
+    extensions = [
+      "nix"
+    ];
+    userSettings = {
+      telemetry.metrics = false;
+    };
+  };
+
   # Manage VS Code
   programs.vscode = let
     commonSettings = {
