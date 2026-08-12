@@ -168,6 +168,17 @@
           commonExtensions
           ++ [pkgs.vscode-marketplace-release.jnoortheen.nix-ide];
       };
+      latex = {
+        userSettings =
+          commonSettings;
+        extensions =
+          commonExtensions
+          ++ [
+            pkgs.vscode-marketplace-release.streetsidesoftware.code-spell-checker
+            pkgs.vscode-marketplace-release.streetsidesoftware.code-spell-checker-german
+            pkgs.vscode-marketplace-release.james-yu.latex-workshop
+          ];
+      };
     };
   };
 
