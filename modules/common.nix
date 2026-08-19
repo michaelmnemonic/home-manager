@@ -242,7 +242,7 @@
     enable = true;
     overrideConfig = true;
     configFile = {
-      # Make Caps Lock act as an additional Ctrl modifier, but keep identifying as Caps Lock so voxtype can capture it as hotkey 
+      # Make Caps Lock act as an additional Ctrl modifier, but keep identifying as Caps Lock so voxtype can capture it as hotkey
       kxkbrc = {
         Layout = {
           Options = "caps:ctrl_modifier";
