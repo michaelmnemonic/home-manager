@@ -19,13 +19,18 @@
       url = "github:michaelmnemonic/t3code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    voxtype = {
+      url = "github:peteonrails/voxtype/8d49248baa53f29cb33007c9625a37281c72e799"; # v0.7.5
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     agenix,
-    nixpkgs,
-    nix-vscode-extensions,
     home-manager,
+    nix-vscode-extensions,
+    nixpkgs,
     t3code,
+    voxtype,
     ...
   }: let
     vscodeExtensionsOverlay = {
@@ -58,7 +63,7 @@
       };
       "maik@styx" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        extraSpecialArgs = {inherit t3code;};
+        extraSpecialArgs = {inherit t3code voxtype;};
         modules = [
           vscodeExtensionsOverlay
           ./hosts/styx.nix
