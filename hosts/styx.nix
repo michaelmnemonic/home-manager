@@ -2,6 +2,7 @@
   config,
   pkgs,
   plasma-manager,
+  catppuccin,
   t3code,
   voxtype,
   ...

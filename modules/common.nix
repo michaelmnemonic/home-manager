@@ -2,6 +2,7 @@
   lib,
   pkgs,
   plasma-manager,
+  catppuccin,
   voxtype,
   ...
 }: {
@@ -31,7 +32,7 @@
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
+  # shell provided by Home Manager. You don't want to manage your shell
   # through Home Manager then you have to manually source 'hm-session-vars.sh'
   # located at either
   #
@@ -151,7 +152,6 @@
       "window.commandCenter" = false;
       "window.menuBarVisibility" = "hidden";
       "window.titleBarStyle" = "native";
-      "workbench.colorTheme" = "Light 2026";
       "workbench.layoutControl.enabled" = false;
       "workbench.startupEditor" = "none";
     };
@@ -249,6 +249,29 @@
           ResetOldOptions = true;
         };
       };
+    };
+  };
+
+  catppuccin = {
+    enable = true;
+    autoEnable = false;
+    vscode = {
+      # Apply the same theme settings to every VS Code profile
+      profiles = lib.genAttrs ["default" "nix" "latex"] (_: {
+        enable = true;
+        flavor = "latte";
+        settings = {
+          accent = "rosewater";
+          boldKeywords = true;
+          italicComments = true;
+          italicKeywords = true;
+          colorOverrides = {};
+          customUIColors = {};
+          workbenchMode = "default";
+          bracketMode = "rainbow";
+          extraBordersEnabled = false;
+        };
+      });
     };
   };
 

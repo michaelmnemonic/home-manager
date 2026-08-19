@@ -11,6 +11,10 @@
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +35,7 @@
   };
   outputs = {
     agenix,
+    catppuccin,
     home-manager,
     nix-vscode-extensions,
     nixpkgs,
@@ -69,10 +74,12 @@
       };
       "maik@styx" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        extraSpecialArgs = {inherit t3code voxtype;};
+        extraSpecialArgs = {inherit catppuccin t3code voxtype;};
         modules = [
           agenix.homeManagerModules.default
+          catppuccin.homeModules.catppuccin
           plasma-manager.homeModules.plasma-manager
+          voxtype.homeManagerModules.default
           vscodeExtensionsOverlay
           ./hosts/styx.nix
         ];
