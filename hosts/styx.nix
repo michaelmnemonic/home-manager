@@ -1,6 +1,7 @@
 {
-  pkgs,
   config,
+  pkgs,
+  plasma-manager,
   t3code,
   voxtype,
   ...

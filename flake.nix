@@ -23,12 +23,18 @@
       url = "github:peteonrails/voxtype/8d49248baa53f29cb33007c9625a37281c72e799"; # v0.7.5
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
   outputs = {
     agenix,
     home-manager,
     nix-vscode-extensions,
     nixpkgs,
+    plasma-manager,
     t3code,
     voxtype,
     ...
@@ -65,9 +71,10 @@
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         extraSpecialArgs = {inherit t3code voxtype;};
         modules = [
+          agenix.homeManagerModules.default
+          plasma-manager.homeModules.plasma-manager
           vscodeExtensionsOverlay
           ./hosts/styx.nix
-          agenix.homeManagerModules.default
         ];
       };
     };
