@@ -1,6 +1,8 @@
 {
-  pkgs,
   lib,
+  pkgs,
+  plasma-manager,
+  voxtype,
   ...
 }: {
   home.username = "maik";
@@ -19,6 +21,7 @@
     (pkgs.writeShellScriptBin "heavy-run" ''
       exec systemd-run --user --slice=app-heavy.slice --scope "$@"
     '')
+    dotool
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -201,6 +204,52 @@
           python312Packages.pillow
         ]
     );
+  };
+
+  services.voxtype = {
+    enable = true;
+    package = voxtype.packages.${pkgs.stdenv.hostPlatform.system}.parakeet;
+    loadModels = ["parakeet-tdt-0.6b-v3"];
+    settings = {
+      engine = "parakeet";
+      state_file = "auto";
+      parakeet = {
+        model = "parakeet-tdt-0.6b-v3";
+        on_demand_loading = true;
+      };
+      output = {
+        mode = "type";
+        fallback_to_clipboard = false;
+        driver_order = ["dotool"];
+        notification = {
+          on_recording_start = true;
+          on_recording_stop = true;
+          on_transcription = false;
+        };
+      };
+      hotkey = {
+        enable = true;
+        key = "CAPSLOCK";
+        mode = "toggle";
+      };
+      osd = {
+        enabled = false;
+      };
+    };
+  };
+
+  programs.plasma = {
+    enable = true;
+    overrideConfig = true;
+    configFile = {
+      # Make Caps Lock act as an additional Ctrl modifier, but keep identifying as Caps Lock so voxtype can capture it as hotkey 
+      kxkbrc = {
+        Layout = {
+          Options = "caps:ctrl_modifier";
+          ResetOldOptions = true;
+        };
+      };
+    };
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
