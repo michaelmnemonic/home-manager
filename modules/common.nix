@@ -242,6 +242,14 @@
   programs.plasma = {
     enable = true;
     overrideConfig = true;
+    desktop = {
+      icons = {
+        alignment = "left";
+        arrangement = "topToBottom";
+      };
+      mouseActions.rightClick = "applicationLauncher";
+      widgets = [];
+    };
     input.touchpads = [
       {
         name = "CIRQ1080:00 0488:1082 Touchpad";
