@@ -289,6 +289,7 @@
     };
     workspace = {
       theme = "default";
+      splashScreen.theme = "None";
       wallpaperPlainColor = "111,111,111";
     };
   };
