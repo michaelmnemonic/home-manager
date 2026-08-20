@@ -147,6 +147,7 @@
       "chat.titleBar.signIn.enabled" = false;
       "editor.formatOnSave" = true;
       "editor.wordWrap" = "wordWrapColumn";
+      "git.confirmSync" = false;
       "git.useIntegratedAskPass" = false;
       "window.commandCenter" = false;
       "window.menuBarVisibility" = "hidden";
