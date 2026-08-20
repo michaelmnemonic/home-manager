@@ -243,6 +243,8 @@
     overrideConfig = true;
     configFile = {
       plasma-localerc.Formats.LANG = "de_DE.UTF-8";
+      # Use natural scroll on touchpad
+      kcminputrc."Libinput/1160/4226/CIRQ1080:00 0488:1082 Touchpad".NaturalScroll = true;
       # Make Caps Lock act as an additional Ctrl modifier, but keep identifying as Caps Lock so voxtype can capture it as hotkey
       kxkbrc = {
         Layout = {
