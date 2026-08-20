@@ -270,6 +270,19 @@
         "org.kde.kdecoration2".ButtonsOnLeft = "SE";
         Xwayland.Scale = 1.8;
       };
+      kwinrulesrc = {
+        General = {
+          count = 1;
+          rules = "ed35ba1d-fb14-4e6a-b23b-309082753aa5";
+        };
+        "ed35ba1d-fb14-4e6a-b23b-309082753aa5" = {
+          Description = "BreezeDark für mpv";
+          decocolor = "BreezeDark";
+          decocolorrule = 2;
+          wmclass = "mpv";
+          wmclassmatch = 1;
+        };
+      };
     };
   };
 
