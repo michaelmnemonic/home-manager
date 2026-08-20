@@ -241,6 +241,9 @@
   programs.plasma = {
     enable = true;
     overrideConfig = true;
+    shortcuts = {
+      kwin."Window Close" = ["Alt+F4" "Meta+Q"];
+    };
     configFile = {
       plasma-localerc.Formats.LANG = "de_DE.UTF-8";
       # Use natural scroll on touchpad
