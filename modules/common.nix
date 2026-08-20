@@ -244,6 +244,7 @@
     overrideConfig = true;
     shortcuts = {
       kwin."Window Close" = ["Alt+F4" "Meta+Q"];
+      "services/org.kde.krunner.desktop"._launch = ["Alt+Space" "Alt+F2" "Meta" "Search"];
     };
     configFile = {
       plasma-localerc.Formats.LANG = "de_DE.UTF-8";
