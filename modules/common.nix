@@ -242,6 +242,15 @@
   programs.plasma = {
     enable = true;
     overrideConfig = true;
+    input.touchpads = [
+      {
+        name = "CIRQ1080:00 0488:1082 Touchpad";
+        enable = true;
+        naturalScroll = true;
+        productId = "1082";
+        vendorId = "0488";
+      }
+    ];
     shortcuts = {
       kwin."Window Close" = ["Alt+F4" "Meta+Q"];
       "services/org.kde.krunner.desktop"._launch = ["Alt+Space" "Alt+F2" "Meta" "Search"];
