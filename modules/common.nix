@@ -288,6 +288,7 @@
       };
     };
     workspace = {
+      theme = "default";
       wallpaperPlainColor = "111,111,111";
     };
   };
