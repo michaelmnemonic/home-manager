@@ -249,6 +249,8 @@
           ResetOldOptions = true;
         };
       };
+      # Start with an empty session
+      ksmserverrc.General.loginMode = "emptySession";
       kwinrc = {
         Desktops.Id_1 = "765895f0-afa3-4fa5-acb6-6058f4806a19";
         Desktops.Id_2 = "b9cdd882-cc81-42c1-9a7d-821c1768a6a5";
