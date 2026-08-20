@@ -249,6 +249,17 @@
           ResetOldOptions = true;
         };
       };
+      kwinrc = {
+        Desktops.Id_1 = "765895f0-afa3-4fa5-acb6-6058f4806a19";
+        Desktops.Id_2 = "b9cdd882-cc81-42c1-9a7d-821c1768a6a5";
+        Desktops.Id_3 = "34d8cf95-0b3f-442b-9dde-f019d41ee3e3";
+        Desktops.Id_4 = "7d6fc652-db5e-4292-9530-4df88f4af99d";
+        Desktops = {
+          Number = 4;
+          Rows = 1;
+        };
+        "org.kde.kdecoration2".ButtonsOnLeft = "SE";
+      };
     };
   };
 
