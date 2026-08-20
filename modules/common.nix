@@ -287,6 +287,9 @@
         };
       };
     };
+    workspace = {
+      wallpaperPlainColor = "111,111,111";
+    };
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
