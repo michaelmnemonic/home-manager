@@ -262,6 +262,7 @@
           Rows = 1;
         };
         "org.kde.kdecoration2".ButtonsOnLeft = "SE";
+        Xwayland.Scale = 1.8;
       };
     };
   };
