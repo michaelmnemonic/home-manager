@@ -242,6 +242,7 @@
     enable = true;
     overrideConfig = true;
     configFile = {
+      plasma-localerc.Formats.LANG = "de_DE.UTF-8";
       # Make Caps Lock act as an additional Ctrl modifier, but keep identifying as Caps Lock so voxtype can capture it as hotkey
       kxkbrc = {
         Layout = {
