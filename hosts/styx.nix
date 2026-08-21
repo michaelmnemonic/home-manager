@@ -12,6 +12,11 @@
     t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
   ];
 
+  home.file = {
+    # Panel
+    ".config/vibepanel/config.toml".source = ../dotfiles/vibepanel/config.toml;
+  };
+
   age = {
     identityPaths = ["/home/maik/.ssh/id_ed25519" "/home/maik/.config/home-manager/secrets/age.key"];
     secrets = {

@@ -1,0 +1,33 @@
+[bar]
+background_color = "#000000"
+background_opacity = 1.0
+border_radius = 0
+popover_offset = 10
+size = 30
+outline = false
+
+[widgets]
+left = ["workspaces"]
+center = ["clock"]
+right = ["notifications", "tray", { group = ["cpu", "memory"] }, "battery", "quick_settings" ]
+outline = false
+
+[widgets.clock]
+format = "%H:%M  %d.%m"
+
+[widgets.media]
+template = "{controls}"
+
+[widgets.quick_settings]
+updates = false
+
+[theme]
+mode = "dark"
+accent = "#DC8ADD"
+outline = true
+outline_width = 3
+outline_color = "accent"
+outline_opacity = 1.0
+
+[theme.typography]
+font_family = "Inter"
