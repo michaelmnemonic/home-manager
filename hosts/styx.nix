@@ -1,9 +1,7 @@
 {
   config,
   pkgs,
-  plasma-manager,
   t3code,
-  voxtype,
   ...
 }: {
   imports = [../modules/common.nix ../modules/niri.nix ../modules/syncthing.nix];
