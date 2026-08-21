@@ -13,6 +13,10 @@
   ];
 
   home.file = {
+    # Niri
+    ".config/niri/config.kdl".source = ../dotfiles/niri/config.kdl;
+    ".config/niri/keymap".source = ../dotfiles/niri/keymap;
+
     # Panel
     ".config/vibepanel/config.toml".source = ../dotfiles/vibepanel/config.toml;
   };
