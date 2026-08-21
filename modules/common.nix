@@ -262,6 +262,92 @@
         vendorId = "0488";
       }
     ];
+    panels = [
+      {
+        location = "bottom";
+        opacity = "opaque";
+        floating = false;
+        height = 30;
+        widgets = [
+          {
+            digitalClock = {
+              date.enable = false;
+              calendar = {
+                plugins = ["holidaysevents" "pimevents"];
+                showWeekNumbers = true;
+              };
+            };
+          }
+          # Nokara launcher. The plasmoid is not packaged in nixpkgs and is
+          # installed manually in ~/.local/share/plasma/plasmoids/.
+          {
+            name = "com.n3thshan.nokara";
+            config.General = {
+              dotSizeCustom = 11;
+              singleRow = false;
+              spacingVertical = 0;
+            };
+          }
+          # Battery power draw sensor
+          {
+            systemMonitor = {
+              displayStyle = "org.kde.ksysguard.textonly";
+              showTitle = false;
+              sensors = [
+                {
+                  name = "lmsensors/BAT1-acpi-0/power1";
+                  color = "220,245,244";
+                  label = " ";
+                }
+              ];
+              # Sub-config-groups use the "/" notation, e.g. this writes to
+              # [Configuration][org.kde.ksysguard.linechart][General]
+              settings."org.kde.ksysguard.linechart/General" = {
+                rangeAutoY = false;
+                rangeToY = 25;
+              };
+            };
+          }
+          {panelSpacer.expanding = true;}
+          {
+            iconTasks = {
+              launchers = [
+                "applications:systemsettings.desktop"
+                "preferred://filemanager"
+                "preferred://browser"
+                "applications:org.kde.kmail2.desktop"
+                "applications:org.kde.merkuro.calendar.desktop"
+                "applications:org.kde.tokodon.desktop"
+                "applications:org.fooyin.fooyin.desktop"
+                "applications:steam.desktop"
+                "applications:code.desktop"
+                "applications:t3code.desktop"
+                "applications:org.kde.konsole.desktop"
+              ];
+              appearance = {
+                fill = false;
+                iconSpacing = 3;
+              };
+              behavior.grouping.method = "none";
+            };
+          }
+          {panelSpacer.expanding = true;}
+          {
+            name = "org.kde.plasma.lock_logout";
+            config.General = {
+              actionsOrder = ["lockScreen" "switchUser" "requestShutDown" "requestReboot" "requestLogout" "requestLogoutScreen" "suspendToRam" "suspendToDisk"];
+              show_lockScreen = false;
+            };
+          }
+          {
+            name = "org.kde.plasma.systemtray";
+            config.General = {
+              disabledStatusNotifiers = ["steam"];
+            };
+          }
+        ];
+      }
+    ];
     shortcuts = {
       kwin."Window Close" = ["Alt+F4" "Meta+Q"];
       "services/org.kde.krunner.desktop"._launch = ["Alt+Space" "Alt+F2" "Meta" "Search"];
