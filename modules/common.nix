@@ -181,7 +181,10 @@
           };
         extensions =
           commonExtensions
-          ++ [pkgs.vscode-marketplace-release.jnoortheen.nix-ide];
+          ++ [
+            pkgs.vscode-marketplace-release.jnoortheen.nix-ide
+            pkgs.vscode-marketplace-release.github.vscode-github-actions
+          ];
       };
       latex = {
         userSettings =
