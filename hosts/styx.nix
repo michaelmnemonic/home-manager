@@ -43,6 +43,25 @@
   # Run syncthing on efficiency cores
   systemd.user.services.syncthing.Service.AllowedCPUs = "4-7";
 
+  # Vibepanel
+  systemd.user.services.vibepanel = {
+    Unit = {
+      Description = "GTK4 panel for Wayland with notifications, OSD, and quick settings – between a status bar and a desktop shell.";
+      After = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
+      Requisite = ["graphical-session.target"];
+    };
+    Service = {
+      Slice = "session.slice";
+      ExecStart = "/run/current-system/sw/bin/vibepanel";
+      Restart = "on-failure";
+      RestartSec = "10";
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
+    };
+  };
+
   # Walker
   services.walker = {
     enable = true;
