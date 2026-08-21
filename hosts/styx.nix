@@ -19,6 +19,9 @@
 
     # Panel
     ".config/vibepanel/config.toml".source = ../dotfiles/vibepanel/config.toml;
+
+    # Walker
+    ".config/walker/themes/custom/style.css".source = ../dotfiles/walker/themes/custom/style.css;
   };
 
   age = {
@@ -39,4 +42,23 @@
 
   # Run syncthing on efficiency cores
   systemd.user.services.syncthing.Service.AllowedCPUs = "4-7";
+
+  # Walker
+  services.walker = {
+    enable = true;
+    systemd.enable = true;
+    settings = {
+      app_launch_prefix = "systemd-run --user --slice=app-interactive.slice --scope ";
+      as_window = false;
+      close_when_open = false;
+      disable_click_to_close = false;
+      force_keyboard_focus = false;
+      hotreload_theme = false;
+      locale = "";
+      monitor = "";
+      terminal_title_flag = "";
+      theme = "custom";
+      timeout = 0;
+    };
+  };
 }
