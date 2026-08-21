@@ -33,7 +33,10 @@ in {
           model = "parakeet-tdt-0.6b-v3";
           on_demand_loading = true;
         };
-        audio.feedback.enabled = true;
+        audio = {
+          feedback.enabled = true;
+          pause_media = true;
+        };
         output = {
           mode = "type";
           fallback_to_clipboard = false;
