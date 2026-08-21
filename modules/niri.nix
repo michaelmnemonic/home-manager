@@ -86,6 +86,23 @@ in {
       };
     };
 
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Adwaita";
+      };
+      gtk4.theme = null;
+    };
+
+    dconf.settings = {
+      "org.gnome.desktop.interface" = {
+        "accent-color" = "purple";
+      };
+      "org.gnome.desktop.wm.preferences" = {
+        "button-layout" = "appmenu:close";
+      };
+    };
+
     # Voxtype
     universe.voxtype = {
       enable = true;
