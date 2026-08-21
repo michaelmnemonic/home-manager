@@ -8,7 +8,8 @@
 }: {
   imports = [../modules/common.nix ../modules/syncthing.nix];
 
-  home.packages = [
+  home.packages = with pkgs; [
+    elephant
     t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
   ];
 
