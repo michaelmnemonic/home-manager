@@ -61,4 +61,23 @@
       timeout = 0;
     };
   };
+
+  # Data provider and executor for walker
+  systemd.user.services.elephant = {
+    Unit = {
+      Description = "Data provider and executor";
+      After = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
+      Requisite = ["graphical-session.target"];
+    };
+    Service = {
+      Slice = "session.slice";
+      ExecStart = "${pkgs.elephant}/bin/elephant";
+      Restart = "on-failure";
+      RestartSec = "10";
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
+    };
+  };
 }
