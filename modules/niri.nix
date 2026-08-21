@@ -9,7 +9,7 @@ in {
   options.universe.niri = {
     enable = lib.mkEnableOption "An opinionated Niri session";
   };
-
+  imports = [./voxtype.nix];
   config = lib.mkIf cfg.enable {
     home.file = {
       # Niri
@@ -82,6 +82,13 @@ in {
       Install = {
         WantedBy = ["graphical-session.target"];
       };
+    };
+
+    # Voxtype
+    universe.voxtype = {
+      enable = true;
+      hotkey = false;
+      drive_order = "wtype";
     };
   };
 }

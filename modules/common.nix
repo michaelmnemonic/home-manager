@@ -2,7 +2,6 @@
   lib,
   pkgs,
   plasma-manager,
-  voxtype,
   ...
 }: {
   home.username = "maik";
@@ -208,39 +207,6 @@
           python312Packages.pillow
         ]
     );
-  };
-
-  services.voxtype = {
-    enable = true;
-    package = voxtype.packages.${pkgs.stdenv.hostPlatform.system}.parakeet;
-    loadModels = ["parakeet-tdt-0.6b-v3"];
-    settings = {
-      engine = "parakeet";
-      state_file = "auto";
-      parakeet = {
-        model = "parakeet-tdt-0.6b-v3";
-        on_demand_loading = true;
-      };
-      audio.feedback.enabled = true;
-      output = {
-        mode = "type";
-        fallback_to_clipboard = false;
-        driver_order = ["dotool"];
-        notification = {
-          on_recording_start = false;
-          on_recording_stop = false;
-          on_transcription = false;
-        };
-      };
-      hotkey = {
-        enable = true;
-        key = "CAPSLOCK";
-        mode = "toggle";
-      };
-      osd = {
-        enabled = false;
-      };
-    };
   };
 
   programs.plasma = {
