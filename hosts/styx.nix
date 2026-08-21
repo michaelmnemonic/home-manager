@@ -26,7 +26,8 @@
     folders = ["Bilder" "Bücher" "Dokumente" "Manga" "Musik"];
   };
 
-  universe.niri.enable = true;
+  # Niri wm
+  universe.niri.enable = false;
 
   # Run syncthing on efficiency cores
   systemd.user.services.syncthing.Service.AllowedCPUs = "4-7";
