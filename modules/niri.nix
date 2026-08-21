@@ -97,6 +97,8 @@ in {
     dconf.settings = {
       "org.gnome.desktop.interface" = {
         "accent-color" = "purple";
+        "font-name" = "Inter Variable 11";
+        "monospace-font-name" = "JetBrains Mono 10";
       };
       "org.gnome.desktop.wm.preferences" = {
         "button-layout" = "appmenu:close";
