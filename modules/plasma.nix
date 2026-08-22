@@ -36,7 +36,7 @@ in {
       ];
       panels = [
         {
-          location = "bottom";
+          location = "top";
           opacity = "opaque";
           floating = false;
           height = 27;
