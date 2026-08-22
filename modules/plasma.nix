@@ -125,6 +125,18 @@ in {
         "services/org.kde.krunner.desktop"._launch = ["Alt+Space" "Alt+F2" "Meta" "Search"];
       };
       configFile = {
+        dolphinrc = {
+          General = {
+            RememberOpenedTabs = false;
+            ShowFullPath = true;
+            ShowFullPathInTitlebar = true;
+          };
+          "KFileDialog Settings" = {
+            "Places Icons Auto-resize" = false;
+            "Places Icons Static Size" = 22;
+          };
+          PreviewSettings.Plugins = "appimagethumbnail,audiothumbnail,windowsexethumbnail,imagethumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,jpegthumbnail,kraorathumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,fontthumbnail,svgthumbnail,ffmpegthumbs";
+        };
         plasma-localerc.Formats.LANG = "de_DE.UTF-8";
         # Use natural scroll on touchpad
         kcminputrc."Libinput/1160/4226/CIRQ1080:00 0488:1082 Touchpad".NaturalScroll = true;
