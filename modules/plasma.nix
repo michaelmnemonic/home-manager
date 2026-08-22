@@ -165,8 +165,31 @@ in {
         theme = "default";
         splashScreen.theme = "None";
         wallpaperPlainColor = "111,111,111";
+        cursor = {
+          animationTime = 5;
+          cursorFeedback = "Bouncing";
+          size = 24;
+          taskManagerFeedback = true;
+          theme = "Breeze_Light";
+        };
+        iconTheme = "Breeze";
+        widgetStyle = "breeze";
       };
     };
+
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Breeze";
+      };
+      gtk4.theme = null;
+    };
+
+    fonts.fontconfig.defaultFonts = {
+      sansSerif = ["Inter Variable 10"];
+      monospace = ["JetBrains Mono 10"];
+    };
+
     # Voxtype
     universe.voxtype = {
       enable = true;
