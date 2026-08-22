@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.universe.plasma;
@@ -13,6 +14,11 @@ in {
     home.file = {
       ".config/mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = ../dotfiles/firefox/org.kde.plasma.browser_integration.json;
     };
+
+    home.packages = with pkgs; [
+      dotool
+      playerctl
+    ];
 
     programs.plasma = {
       enable = true;
