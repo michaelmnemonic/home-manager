@@ -31,13 +31,15 @@ in {
         RestartSteps = "6";
         RestartMaxDelaySec = "8min";
         # sandbox: read-only filesystem incl. /home and all
-        # sibling model dirs — writable is only this model's cache dir; Vulkan
-        # GPU probing still works under seccomp; network cannot be filtered
-        # for user units, and /dev/dri stays accessible on purpose
+        # sibling model dirs — writable is only this model's cache dir;
+        # GPU access deliberately removed (PrivateDevices hides /dev/dri):
+        # the download still works, only the fitted params become CPU-only;
+        # network cannot be filtered for user units
         ProtectSystem = "strict";
         ProtectHome = "read-only";
         ReadWritePaths = [hfModelDir];
         PrivateTmp = true;
+        PrivateDevices = true;
         NoNewPrivileges = true;
         RestrictAddressFamilies = ["AF_INET" "AF_INET6" "AF_UNIX"];
         SystemCallFilter = ["@system-service"];
