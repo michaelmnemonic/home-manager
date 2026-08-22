@@ -91,6 +91,7 @@ in {
       shortcuts = {
         kwin."Window Close" = ["Alt+F4" "Meta+Q"];
         "services/org.kde.krunner.desktop"._launch = ["Alt+Space" "Alt+F2" "Meta" "Search"];
+        "services/firefox.desktop".new-window = "Meta+B";
       };
       configFile = {
         dolphinrc = {
