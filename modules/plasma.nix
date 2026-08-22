@@ -147,7 +147,7 @@ in {
         };
       };
       workspace = {
-        theme = "default";
+        theme = "breeze-dark";
         splashScreen.theme = "None";
         wallpaperPlainColor = "111,111,111";
         cursor = {
@@ -155,10 +155,10 @@ in {
           cursorFeedback = "Bouncing";
           size = 24;
           taskManagerFeedback = true;
-          theme = "Breeze_Light";
+          theme = "breeze_cursors";
         };
-        iconTheme = "Breeze";
-        widgetStyle = "breeze";
+        iconTheme = "breeze";
+        widgetStyle = "Breeze";
       };
     };
 
