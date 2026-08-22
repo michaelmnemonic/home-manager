@@ -4,7 +4,7 @@
   t3code,
   ...
 }: {
-  imports = [../modules/common.nix ../modules/niri.nix ../modules/plasma.nix ../modules/syncthing.nix];
+  imports = [../modules/common.nix ../modules/llama-cpp.nix ../modules/niri.nix ../modules/plasma.nix ../modules/syncthing.nix];
 
   home.packages = [
     t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
@@ -31,6 +31,9 @@
 
   # Plasma desktop
   universe.plasma.enable = true;
+
+  # Local LLM using llama.cpp
+  universe.llama-cpp.enable = true;
 
   # Run syncthing on efficiency cores
   systemd.user.services.syncthing.Service.AllowedCPUs = "4-7";
