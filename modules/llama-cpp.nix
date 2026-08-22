@@ -5,6 +5,9 @@
   ...
 }: let
   cfg = config.universe.llama-cpp;
+  # the -hf downloader (llama.cpp b10408) uses the huggingface_hub layout and
+  # writes only inside the model directory (blobs/, snapshots/, refs/)
+  hfModelDir = "${config.home.homeDirectory}/.cache/huggingface/hub/models--unsloth--Qwen3.8-27B-GGUF";
 in {
   options.universe.llama-cpp = {
     enable = lib.mkEnableOption "Local LLM setup with llama.cpp";
@@ -27,6 +30,17 @@ in {
         RestartSec = "10";
         RestartSteps = "6";
         RestartMaxDelaySec = "8min";
+        # sandbox: read-only filesystem incl. /home and all
+        # sibling model dirs — writable is only this model's cache dir; Vulkan
+        # GPU probing still works under seccomp; network cannot be filtered
+        # for user units, and /dev/dri stays accessible on purpose
+        ProtectSystem = "strict";
+        ProtectHome = "read-only";
+        ReadWritePaths = [hfModelDir];
+        PrivateTmp = true;
+        NoNewPrivileges = true;
+        RestrictAddressFamilies = ["AF_INET" "AF_INET6" "AF_UNIX"];
+        SystemCallFilter = ["@system-service"];
       };
       Install = {
         # user manager reaches default.target on the first login of the user
@@ -34,5 +48,9 @@ in {
         WantedBy = ["default.target"];
       };
     };
+
+    # pre-create the cache dir outside the sandbox: ReadWritePaths needs an
+    # existing path and inside the unit the filesystem is read-only
+    systemd.user.tmpfiles.rules = ["d ${hfModelDir} - - - - -"];
   };
 }
