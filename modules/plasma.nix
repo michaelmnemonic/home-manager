@@ -98,6 +98,7 @@ in {
         "services/firefox.desktop".new-window = "Meta+B";
         "services/org.kde.konsole.desktop"._launch = ["Meta+Return" "Ctrl+Alt+T"];
         "services/org.kde.krunner.desktop"._launch = ["Alt+Space" "Alt+F2" "Meta" "Search"];
+        "services/org.kde.plasma-systemmonitor.desktop"._launch = ["Ctrl+Shift+Esc" "Meta+Esc"];
         kwin."Window Close" = ["Alt+F4" "Meta+Q"];
       };
       configFile = {
