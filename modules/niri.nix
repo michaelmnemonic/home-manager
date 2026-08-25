@@ -26,6 +26,7 @@ in {
     home.packages = with pkgs; [
       elephant
       playerctl
+      swaylock
       wtype
     ];
 
