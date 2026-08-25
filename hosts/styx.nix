@@ -8,6 +8,7 @@
 
   home.packages = [
     t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
+    pkgs.plattenalbum
   ];
 
   age = {
@@ -34,6 +35,21 @@
 
   # Local LLM using llama.cpp
   universe.llama-cpp.enable = true;
+
+  # mpd
+  services.mpd = {
+    enable = true;
+    network.startWhenNeeded = true;
+    musicDirectory = "/home/maik/Musik";
+    extraConfig = ''
+      auto_update "yes"
+
+      audio_output {
+        type            "pipewire"
+        name            "PipeWire output"
+      }
+    '';
+  };
 
   # Run syncthing on efficiency cores
   systemd.user.services.syncthing.Service.AllowedCPUs = "4-7";
