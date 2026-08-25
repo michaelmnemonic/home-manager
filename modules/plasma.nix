@@ -171,18 +171,6 @@ in {
       };
     };
 
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Breeze";
-      };
-      gtk4.theme = null;
-    };
-
-    fonts.fontconfig.defaultFonts = {
-      sansSerif = ["Inter Variable 10"];
-      monospace = ["JetBrains Mono 10"];
-    };
 
     # Voxtype
     universe.voxtype = {
