@@ -171,7 +171,6 @@ in {
       };
     };
 
-
     # Voxtype
     universe.voxtype = {
       enable = true;
