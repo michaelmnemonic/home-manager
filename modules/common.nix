@@ -148,8 +148,8 @@
       "git.confirmSync" = false;
       "git.useIntegratedAskPass" = false;
       "window.commandCenter" = false;
-      "window.menuBarVisibility" = "hidden";
-      "window.titleBarStyle" = "native";
+      "window.menuBarVisibility" = "classic";
+      "window.titleBarStyle" = "custom";
       "workbench.colorTheme" = "Light 2026";
       "workbench.layoutControl.enabled" = false;
       "workbench.startupEditor" = "none";
