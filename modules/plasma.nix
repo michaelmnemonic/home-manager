@@ -12,7 +12,6 @@ in {
   imports = [./voxtype.nix];
   config = lib.mkIf cfg.enable {
     home.file = {
-      ".config/mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = ../dotfiles/firefox/org.kde.plasma.browser_integration.json;
     };
 
     home.packages = with pkgs; [
