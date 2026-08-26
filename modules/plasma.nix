@@ -17,6 +17,7 @@ in {
 
     home.packages = with pkgs; [
       dotool
+      kdePackages.marknote
       playerctl
     ];
 
