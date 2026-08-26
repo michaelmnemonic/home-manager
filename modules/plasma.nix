@@ -25,7 +25,7 @@ in {
       overrideConfig = true;
       desktop = {
         icons = {
-          alignment = "right";
+          alignment = "left";
           arrangement = "topToBottom";
         };
         mouseActions.rightClick = "applicationLauncher";
@@ -45,11 +45,8 @@ in {
           location = "top";
           opacity = "opaque";
           floating = false;
-          height = 27;
+          height = 30;
           widgets = [
-            {name = "org.kde.plasma.windowlist";}
-            {appMenu = {};}
-            {panelSpacer.expanding = true;}
             {
               digitalClock = {
                 date.enable = false;
@@ -59,6 +56,60 @@ in {
                 };
               };
             }
+            # Nokara launcher. The plasmoid is not packaged in nixpkgs and is
+            # installed manually in ~/.local/share/plasma/plasmoids/.
+            {
+              name = "com.n3thshan.nokara";
+              config.General = {
+                dotSizeCustom = 11;
+                singleRow = false;
+                spacingVertical = 0;
+              };
+            }
+            # Battery power draw sensor
+            {
+              systemMonitor = {
+                displayStyle = "org.kde.ksysguard.textonly";
+                showTitle = false;
+                sensors = [
+                  {
+                    name = "lmsensors/BAT1-acpi-0/power1";
+                    color = "220,245,244";
+                    label = " ";
+                  }
+                ];
+                # Sub-config-groups use the "/" notation, e.g. this writes to
+                # [Configuration][org.kde.ksysguard.linechart][General]
+                settings."org.kde.ksysguard.linechart/General" = {
+                  rangeAutoY = false;
+                  rangeToY = 25;
+                };
+              };
+            }
+            {panelSpacer.expanding = true;}
+            {
+              iconTasks = {
+                launchers = [
+                  "applications:systemsettings.desktop"
+                  "preferred://filemanager"
+                  "preferred://browser"
+                  "applications:org.kde.kmail2.desktop"
+                  "applications:org.kde.merkuro.calendar.desktop"
+                  "applications:org.kde.tokodon.desktop"
+                  "applications:org.fooyin.fooyin.desktop"
+                  "applications:steam.desktop"
+                  "applications:code.desktop"
+                  "applications:t3code.desktop"
+                  "applications:org.kde.konsole.desktop"
+                ];
+                appearance = {
+                  fill = false;
+                  iconSpacing = 3;
+                };
+                behavior.grouping.method = "none";
+              };
+            }
+            {panelSpacer.expanding = true;}
             {
               name = "org.kde.plasma.lock_logout";
               config.General = {
@@ -69,25 +120,6 @@ in {
             {
               name = "org.kde.plasma.systemtray";
               config.General = {
-                extraItems = [
-                  "org.kde.kdeconnect"
-                  "org.kde.plasma.cameraindicator"
-                  "org.kde.plasma.clipboard"
-                  "org.kde.plasma.devicenotifier"
-                  "org.kde.plasma.manage-inputmethod"
-                  "org.kde.plasma.mediacontroller"
-                  "org.kde.plasma.notifications"
-                  "org.kde.plasma.battery"
-                  "org.kde.plasma.brightness"
-                  "org.kde.plasma.keyboardindicator"
-                  "org.kde.plasma.keyboardlayout"
-                  "org.kde.plasma.volume"
-                  "org.kde.plasma.weather"
-                  "org.kde.kscreen"
-                  "org.kde.plasma.bluetooth"
-                  "org.kde.plasma.networkmanagement"
-                  "org.kde.plasma.printmanager"
-                ];
                 disabledStatusNotifiers = ["steam"];
               };
             }
@@ -137,9 +169,8 @@ in {
             Number = 4;
             Rows = 1;
           };
-          Windows.BorderlessMaximizedWindows = true;
-          Xwayland.Scale = 1.8;
           "org.kde.kdecoration2".ButtonsOnLeft = "SE";
+          Xwayland.Scale = 1.8;
         };
         kwinrulesrc = {
           General = {
