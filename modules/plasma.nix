@@ -66,26 +66,6 @@ in {
                 spacingVertical = 0;
               };
             }
-            # Battery power draw sensor
-            {
-              systemMonitor = {
-                displayStyle = "org.kde.ksysguard.textonly";
-                showTitle = false;
-                sensors = [
-                  {
-                    name = "lmsensors/BAT1-acpi-0/power1";
-                    color = "220,245,244";
-                    label = " ";
-                  }
-                ];
-                # Sub-config-groups use the "/" notation, e.g. this writes to
-                # [Configuration][org.kde.ksysguard.linechart][General]
-                settings."org.kde.ksysguard.linechart/General" = {
-                  rangeAutoY = false;
-                  rangeToY = 25;
-                };
-              };
-            }
             {panelSpacer.expanding = true;}
             {
               iconTasks = {
