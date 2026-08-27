@@ -3,7 +3,13 @@
   t3code,
   config,
   ...
-}: {
+}: let
+  # custom chat template for qwen
+  qwen-chat-template = pkgs.fetchurl {
+    url = "https://huggingface.co/froggeric/Qwen-Fixed-Chat-Templates/resolve/main/chat_template.jinja";
+    hash = "sha256-xHyCsFRHUtRU9OQnIo2dnYw99kyeRGy9Aik2L2eUgAk=";
+  };
+in {
   imports = [
     ../modules/common.nix
     ../modules/llama-cpp.nix
@@ -39,6 +45,7 @@
           ctx-size = 100000;
 
           # Thinking
+          chat-template = qwen-chat-template;
           chat-template-kwargs = "{ \"reasoning_effort\" : \"medium\" }";
 
           # Batch
@@ -79,12 +86,14 @@
           repeat-penalty = 1.0;
 
           reasoning = "on";
+          reasoning-format = "deepseek";
+          reasoning-preserve = "on";
           no-warmup = true;
           swa-checkpoints = "5";
           checkpoint-min-step = 32768;
         };
         "unsloth/gemma-4-12B-it-qat-GGUF:UD-Q4_K_XL" = {
-          c = 8192;
+          c = 100000;
           jinja = true;
         };
         "unsloth/gemma-4-E4B-it-qat-GGUF:UD-Q4_K_XL" = {
