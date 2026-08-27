@@ -132,6 +132,11 @@
       "nix"
     ];
     userSettings = {
+      language_models = {
+        "llama.cpp" = {
+          "api_url" = "http://localhost:38101";
+          };
+      };
       telemetry.metrics = false;
     };
   };
