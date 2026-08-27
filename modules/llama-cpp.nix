@@ -81,7 +81,7 @@ in {
         Service = {
           Type = "simple";
           Slice = "background.slice";
-          ExecStart = "${pkgs.llama-cpp-vulkan}/bin/llama-server --models-preset ${configFile} --models-max 1 --sleep-idle-seconds 30";
+          ExecStart = "${pkgs.llama-cpp-vulkan}/bin/llama-server --models-preset ${configFile} --models-max 1 --sleep-idle-seconds 30 --port 38101";
           Restart = "on-failure";
           RestartSec = "10";
           RestartSteps = "6";
