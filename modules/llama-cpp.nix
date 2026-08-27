@@ -48,7 +48,7 @@ in {
               Per-model sections keyed by Hugging Face model id
               (`owner/repo:quant`).
             '';
-            type = with lib.types; attrsOf (attrsOf (oneOf [bool int float str]));
+            type = with lib.types; attrsOf (attrsOf (oneOf [bool int float str path]));
             default = {};
           };
         };
