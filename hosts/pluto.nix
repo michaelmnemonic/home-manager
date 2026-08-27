@@ -19,6 +19,9 @@
   # Niri wm
   universe.niri.enable = true;
 
+  # Local LLM using llama.cpp
+  universe.llama-cpp.enable = true;
+
   # mpd
   services.mpd = {
     enable = true;
