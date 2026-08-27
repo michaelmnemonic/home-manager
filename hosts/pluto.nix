@@ -15,4 +15,7 @@
     t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
     pkgs.calibre-no-speech
   ];
+
+  # Niri wm
+  universe.niri.enable = true;
 }
