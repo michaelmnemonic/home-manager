@@ -143,6 +143,7 @@
       # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
       "chat.disableAIFeatures" = true;
       "chat.titleBar.signIn.enabled" = false;
+      "direnv.restart.automatic" = true;
       "editor.formatOnSave" = true;
       "editor.wordWrap" = "wordWrapColumn";
       "git.confirmSync" = false;
