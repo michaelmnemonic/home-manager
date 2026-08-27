@@ -111,6 +111,7 @@ in {
                 "--models-max 1"
                 "--sleep-idle-seconds 30"
                 "--port 38101"
+                "--no-webui"
               ]
               ++ apiKeyArgs);
           Restart = "on-failure";
