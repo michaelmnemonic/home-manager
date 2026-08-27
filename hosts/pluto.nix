@@ -63,7 +63,7 @@ in {
 
           # Cache
           cache-type-k = "q8_0";
-          cache-type-v = "q8_0";
+          cache-type-v = "q4_0";
           cache-prompt = true;
           cache-reuse = 0;
           cache-ram = 0;
