@@ -14,6 +14,7 @@
   home.packages = [
     t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
     pkgs.calibre-no-speech
+    pkgs.plattenalbum
   ];
 
   # Niri wm
