@@ -61,8 +61,9 @@
       };
       "maik@pluto" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        extraSpecialArgs = {inherit t3code voxtype;};
+        extraSpecialArgs = {inherit agenix t3code voxtype;};
         modules = [
+          agenix.homeManagerModules.default
           plasma-manager.homeModules.plasma-manager
           vscodeExtensionsOverlay
           ./hosts/pluto.nix

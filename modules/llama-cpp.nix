@@ -15,9 +15,22 @@
   downloadCommands = map (
     model: "${pkgs.llama-cpp-vulkan}/bin/llama-fit-params -hf ${model}"
   ) (builtins.attrNames cfg.modelsPreset.models);
+  # optional authentication for llama-server
+  apiKeyArgs =
+    lib.optionals (cfg.apiKeyFile != null) ["--api-key-file ${cfg.apiKeyFile}"];
 in {
   options.universe.llama-cpp = {
     enable = lib.mkEnableOption "Local LLM setup with llama.cpp";
+
+    apiKeyFile = lib.mkOption {
+      description = ''
+        Path to a file containing API key(s) passed as `--api-key-file` to
+        llama-server (one key per line). Requests without a valid key are
+        rejected. If `null`, the server accepts unauthenticated requests.
+      '';
+      type = with lib.types; nullOr (either str path);
+      default = null;
+    };
 
     modelsPreset = lib.mkOption {
       description = ''
@@ -81,7 +94,17 @@ in {
         Service = {
           Type = "simple";
           Slice = "background.slice";
-          ExecStart = "${pkgs.llama-cpp-vulkan}/bin/llama-server --models-preset ${configFile} --models-max 1 --sleep-idle-seconds 30 --port 38101";
+          ExecStart =
+            lib.concatStringsSep
+            " "
+            ([
+                "${pkgs.llama-cpp-vulkan}/bin/llama-server"
+                "--models-preset ${configFile}"
+                "--models-max 1"
+                "--sleep-idle-seconds 30"
+                "--port 38101"
+              ]
+              ++ apiKeyArgs);
           Restart = "on-failure";
           RestartSec = "10";
           RestartSteps = "6";

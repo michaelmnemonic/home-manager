@@ -1,6 +1,7 @@
 {
   pkgs,
   t3code,
+  config,
   ...
 }: {
   imports = [
@@ -17,12 +18,20 @@
     pkgs.plattenalbum
   ];
 
+  age = {
+    identityPaths = ["/home/maik/.ssh/id_ed25519" "/home/maik/.config/home-manager/secrets/age.key"];
+    secrets = {
+      "llama-cpp_pluto.key".file = ../secrets/llama-cpp_pluto.key.age;
+    };
+  };
+
   # Niri wm
   universe.niri.enable = true;
 
   # Local LLM using llama.cpp
   universe.llama-cpp = {
     enable = true;
+    apiKeyFile = config.age.secrets."llama-cpp_pluto.key".path;
     modelsPreset = {
       global.version = 1;
       models = {
