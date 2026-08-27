@@ -45,7 +45,7 @@ in {
           ctx-size = 100000;
 
           # Thinking
-          chat-template = qwen-chat-template;
+          #chat-template = qwen-chat-template;
           chat-template-kwargs = "{ \"reasoning_effort\" : \"medium\" }";
 
           # Batch
@@ -85,9 +85,9 @@ in {
           presence-penalty = 0.0;
           repeat-penalty = 1.0;
 
-          reasoning = "on";
+          reasoning = true;
           reasoning-format = "deepseek";
-          reasoning-preserve = "on";
+          reasoning-preserve = true;
           no-warmup = true;
           swa-checkpoints = "5";
           checkpoint-min-step = 32768;
