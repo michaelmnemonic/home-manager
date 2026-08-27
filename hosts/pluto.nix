@@ -37,6 +37,7 @@ in {
   # Local LLM using llama.cpp
   universe.llama-cpp = {
     enable = true;
+    package = pkgs.llama-cpp-rocm;
     apiKeyFile = config.age.secrets."llama-cpp_pluto.key".path;
     modelsPreset = {
       global.version = 1;

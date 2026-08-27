@@ -13,7 +13,7 @@
   );
   # one download command per configured model; keys are `owner/repo:quant`
   downloadCommands = map (
-    model: "${pkgs.llama-cpp-vulkan}/bin/llama-fit-params -hf ${model}"
+    model: "${cfg.package}/bin/llama-fit-params -hf ${model}"
   ) (builtins.attrNames cfg.modelsPreset.models);
   # optional authentication for llama-server
   apiKeyArgs =
@@ -21,6 +21,14 @@
 in {
   options.universe.llama-cpp = {
     enable = lib.mkEnableOption "Local LLM setup with llama.cpp";
+
+    package = lib.mkOption {
+      description = ''
+        llama.cpp package used for downloading models and serving inference.
+      '';
+      type = lib.types.package;
+      default = pkgs.llama-cpp-vulkan;
+    };
 
     apiKeyFile = lib.mkOption {
       description = ''
@@ -98,7 +106,7 @@ in {
             lib.concatStringsSep
             " "
             ([
-                "${pkgs.llama-cpp-vulkan}/bin/llama-server"
+                "${cfg.package}/bin/llama-server"
                 "--models-preset ${configFile}"
                 "--models-max 1"
                 "--sleep-idle-seconds 30"
