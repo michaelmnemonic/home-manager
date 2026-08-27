@@ -32,7 +32,10 @@ in {
   };
 
   # Niri wm
-  universe.niri.enable = true;
+  universe.niri.enable = false;
+
+  # PLASMA de
+  universe.plasma.enable = true;
 
   # Local LLM using llama.cpp
   universe.llama-cpp = {
