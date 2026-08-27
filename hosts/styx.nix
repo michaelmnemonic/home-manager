@@ -34,7 +34,23 @@
   universe.plasma.enable = true;
 
   # Local LLM using llama.cpp
-  universe.llama-cpp.enable = true;
+  universe.llama-cpp = {
+    enable = true;
+    modelsPreset = {
+      global.version = 1;
+      models = {
+        "unsloth/gemma-4-12B-it-qat-GGUF:UD-Q4_K_XL" = {
+          c = 8192;
+          jinja = true;
+        };
+        "unsloth/gemma-4-E4B-it-qat-GGUF:UD-Q4_K_XL" = {
+          c = 16000;
+          jinja = true;
+          reasoning = "off";
+        };
+      };
+    };
+  };
 
   # mpd
   services.mpd = {
