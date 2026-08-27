@@ -11,6 +11,10 @@
       sections = cfg.modelsPreset.models;
     }
   );
+  # one download command per configured model; keys are `owner/repo:quant`
+  downloadCommands = map (
+    model: "${pkgs.llama-cpp-vulkan}/bin/llama-fit-params -hf ${model}"
+  ) (builtins.attrNames cfg.modelsPreset.models);
 in {
   options.universe.llama-cpp = {
     enable = lib.mkEnableOption "Local LLM setup with llama.cpp";
@@ -39,6 +43,13 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    # an empty ExecStart= list would produce an invalid systemd unit
+    assertions = [
+      {
+        assertion = cfg.modelsPreset.models != {};
+        message = "universe.llama-cpp: at least one model must be configured under modelsPreset.models.";
+      }
+    ];
     systemd.user.services = {
       "llama-cpp-downloader" = {
         Unit = {
@@ -51,11 +62,7 @@ in {
           RemainAfterExit = true;
           Slice = "background.slice";
           # llama-fit-params is not actually the correct tool, but llama.cpp does not provide a download-only tool
-          ExecStart = [
-            "${pkgs.llama-cpp-vulkan}/bin/llama-fit-params -hf unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL"
-            "${pkgs.llama-cpp-vulkan}/bin/llama-fit-params -hf unsloth/gemma-4-12B-it-qat-GGUF:UD-Q4_K_XL"
-            "${pkgs.llama-cpp-vulkan}/bin/llama-fit-params -hf unsloth/gemma-4-E4B-it-qat-GGUF:UD-Q4_K_XL"
-          ];
+          ExecStart = downloadCommands;
           Restart = "on-failure";
           RestartSec = "10";
           RestartSteps = "6";
