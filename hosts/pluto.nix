@@ -18,4 +18,19 @@
 
   # Niri wm
   universe.niri.enable = true;
+
+  # mpd
+  services.mpd = {
+    enable = true;
+    network.startWhenNeeded = true;
+    musicDirectory = "/home/maik/Musik";
+    extraConfig = ''
+      auto_update "yes"
+
+      audio_output {
+        type            "pipewire"
+        name            "PipeWire output"
+      }
+    '';
+  };
 }
