@@ -11,9 +11,53 @@
         version = 1;
       };
       sections = {
-        "unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL" = {
-          c = 4096;
+        "unsloth/Qwen3.8-27B-GGUF:UD-IQ3_XXS" = {
+          ctx-size = 100000;
+
+          # Thinking
+          chat-template-kwargs = "{ \"reasoning_effort\" : \"medium\" }";
+
+          # Batch
+          batch-size = 8192;
+          ubatch-size = 1024;
+
+          parallel = 1;
+          flash-attn = "on";
+          fit = "off";
           jinja = true;
+
+          # Cache
+          cache-type-k = "q8_0";
+          cache-type-v = "q4_0";
+          cache-prompt = true;
+          cache-reuse = 0;
+          cache-ram = 0;
+          no-cache-idle-slots = true;
+
+          # Speculative Decoding
+          spec-type = "draft-mtp,ngram-map-k4v";
+          spec-draft-n-max = 2;
+          spec-draft-p-min = 0.3;
+          spec-ngram-mod-n-min = 4;
+          spec-ngram-mod-n-max = 8;
+          spec-ngram-mod-n-match = 32;
+
+          # CPU
+          threads = 8;
+          threads-batch = 8;
+
+          # Temps
+          temperature = 0.7;
+          top-k = 20;
+          top-p = 0.95;
+          min-p = 0.0;
+          presence-penalty = 0.0;
+          repeat-penalty = 1.0;
+
+          reasoning = "on";
+          no-warmup = true;
+          swa-checkpoints = "5";
+          checkpoint-min-step = 32768;
         };
         "unsloth/gemma-4-12B-it-qat-GGUF:UD-Q4_K_XL" = {
           c = 8192;
