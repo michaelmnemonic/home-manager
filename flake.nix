@@ -63,6 +63,7 @@
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         extraSpecialArgs = {inherit t3code;};
         modules = [
+          plasma-manager.homeModules.plasma-manager
           vscodeExtensionsOverlay
           ./hosts/pluto.nix
         ];
