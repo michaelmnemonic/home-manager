@@ -16,6 +16,7 @@
     secrets = {
       "syncthing_styx_cert.pem".file = ../secrets/syncthing_styx_cert.pem.age;
       "syncthing_styx_key.pem".file = ../secrets/syncthing_styx_key.pem.age;
+      "llama-cpp_styx.key".file = ../secrets/llama-cpp_styx.key.age;
     };
   };
 
@@ -36,9 +37,14 @@
   # Local LLM using llama.cpp
   universe.llama-cpp = {
     enable = true;
+    apiKeyFile = config.age.secrets."llama-cpp_styx.key".path;
     modelsPreset = {
       global.version = 1;
       models = {
+        "unsloth/Qwen3.8-27B-GGUF:UD-IQ4_XS" = {
+          c = 100000;
+          jinja = true;
+        };
         "unsloth/gemma-4-12B-it-qat-GGUF:UD-Q4_K_XL" = {
           c = 8192;
           jinja = true;
@@ -65,6 +71,29 @@
         name            "PipeWire output"
       }
     '';
+  };
+
+  programs.opencode = {
+    enable = true;
+    settings = {
+      provider = {
+          llama-local= {
+            name = "llama.cpp";
+            npm = "@ai-sdk/openai-compatible";
+            options = {
+              baseURL = "http://127.0.0.1:38101/v1";
+            };
+            models = {
+              "unsloth/Qwen3.8-27B-GGUF:UD-IQ4_XS"= {
+                name= "Qwen3.8-27B";
+                };
+              "unsloth/gemma-4-12B-it-qat-GGUF:UD-Q4_K_XL" = {
+                "name" = "gemma-4-12B";
+              };
+            };
+          };
+      };
+    };
   };
 
   # Run syncthing on efficiency cores

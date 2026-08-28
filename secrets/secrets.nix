@@ -10,4 +10,5 @@ in {
   "syncthing_styx_cert.pem.age".publicKeys = [age] ++ users ++ systems;
   "syncthing_styx_key.pem.age".publicKeys = [age] ++ users ++ systems;
   "llama-cpp_pluto.key.age".publicKeys = [age] ++ users ++ systems;
+  "llama-cpp_styx.key.age".publicKeys = [age] ++ users ++ systems;
 }
