@@ -10,6 +10,7 @@
     agenix = {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.agenix.inputs.home-manager.follows = "home-manager";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
