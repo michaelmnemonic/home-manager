@@ -155,7 +155,10 @@ in {
         kwinrulesrc = {
           General = {
             count = 1;
-            rules = "ed35ba1d-fb14-4e6a-b23b-309082753aa5";
+            rules = [
+              "ed35ba1d-fb14-4e6a-b23b-309082753aa5"
+              "7269c4bf-b9fb-47e5-951d-b6313219c9a3"
+              ];
           };
           "ed35ba1d-fb14-4e6a-b23b-309082753aa5" = {
             Description = "BreezeDark für mpv";
@@ -163,6 +166,22 @@ in {
             decocolorrule = 2;
             wmclass = "mpv";
             wmclassmatch = 1;
+          };
+          "7269c4bf-b9fb-47e5-951d-b6313219c9a3]" = {
+            Description="Drawy";
+            desktops=0;
+            desktopsrule=3;
+            fullscreen=true;
+            fullscreenrule=3;
+            maximizehoriz=true;
+            maximizehorizrule=3;
+            maximizevert=true;
+            maximizevertrule=3;
+            screenrule=3;
+            types=1;
+            wmclass="drawy org.kde.drawy";
+            wmclasscomplete=true;
+            wmclassmatch=1;
           };
         };
       };
