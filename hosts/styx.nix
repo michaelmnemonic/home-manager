@@ -4,7 +4,14 @@
   t3code,
   ...
 }: {
-  imports = [../modules/common.nix ../modules/llama-cpp.nix ../modules/niri.nix ../modules/plasma.nix ../modules/syncthing.nix];
+  imports = [
+    ../modules/common.nix
+    ../modules/hypr.nix
+    ../modules/llama-cpp.nix
+    ../modules/niri.nix
+    ../modules/plasma.nix
+    ../modules/syncthing.nix
+  ];
 
   home.packages = [
     t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
@@ -31,8 +38,11 @@
   # Niri wm
   universe.niri.enable = false;
 
+  # Hyprland wm
+  universe.hypr.enable = true;
+
   # Plasma desktop
-  universe.plasma.enable = true;
+  universe.plasma.enable = false;
 
   # Local LLM using llama.cpp
   universe.llama-cpp = {
@@ -77,21 +87,21 @@
     enable = true;
     settings = {
       provider = {
-          llama-local= {
-            name = "llama.cpp";
-            npm = "@ai-sdk/openai-compatible";
-            options = {
-              baseURL = "http://127.0.0.1:38101/v1";
+        llama-local = {
+          name = "llama.cpp";
+          npm = "@ai-sdk/openai-compatible";
+          options = {
+            baseURL = "http://127.0.0.1:38101/v1";
+          };
+          models = {
+            "unsloth/Qwen3.8-27B-GGUF:UD-IQ4_XS" = {
+              name = "Qwen3.8-27B";
             };
-            models = {
-              "unsloth/Qwen3.8-27B-GGUF:UD-IQ4_XS"= {
-                name= "Qwen3.8-27B";
-                };
-              "unsloth/gemma-4-12B-it-qat-GGUF:UD-Q4_K_XL" = {
-                "name" = "gemma-4-12B";
-              };
+            "unsloth/gemma-4-12B-it-qat-GGUF:UD-Q4_K_XL" = {
+              "name" = "gemma-4-12B";
             };
           };
+        };
       };
     };
   };
