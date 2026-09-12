@@ -39,10 +39,10 @@
   universe.niri.enable = false;
 
   # Hyprland wm
-  universe.hypr.enable = true;
+  universe.hypr.enable = false;
 
   # Plasma desktop
-  universe.plasma.enable = false;
+  universe.plasma.enable = true;
 
   # Local LLM using llama.cpp
   universe.llama-cpp = {
