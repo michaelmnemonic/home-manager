@@ -1,8 +1,10 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: {
+  imports = [./gnome.nix];
   home.username = "maik";
   home.homeDirectory = "/home/maik";
 
@@ -135,7 +137,7 @@
       language_models = {
         "llama.cpp" = {
           "api_url" = "http://localhost:38101";
-          };
+        };
       };
       telemetry.metrics = false;
     };
@@ -154,11 +156,12 @@
       "git.confirmSync" = false;
       "git.useIntegratedAskPass" = false;
       "window.commandCenter" = false;
-      "window.menuBarVisibility" = "hidden";
-      "window.titleBarStyle" = "native";
       "workbench.colorTheme" = "Light 2026";
-      "workbench.layoutControl.enabled" = false;
       "workbench.startupEditor" = "none";
+      # Use server side titlebar on everywhere except for GNOME desktop
+      "window.menuBarVisibility" = lib.mkIf (!config.universe.gnome.enable) "hidden";
+      "window.titleBarStyle" = lib.mkIf (!config.universe.gnome.enable) "native";
+      "workbench.layoutControl.enabled" = lib.mkIf (!config.universe.gnome.enable) false;
     };
     commonExtensions = with pkgs.vscode-marketplace-release; [
       mkhl.direnv
