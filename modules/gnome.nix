@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.universe.gnome;
@@ -10,6 +11,10 @@ in {
   };
   imports = [./voxtype.nix];
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      ghostty
+    ];
+
     dconf = {
       enable = true;
       settings = {
