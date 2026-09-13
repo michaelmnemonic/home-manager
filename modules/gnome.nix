@@ -12,6 +12,7 @@ in {
   imports = [./voxtype.nix];
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
+      fractal
       fragments
       ghostty
     ];
