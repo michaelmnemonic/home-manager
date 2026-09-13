@@ -6,6 +6,7 @@
 }: {
   imports = [
     ../modules/common.nix
+    ../modules/gnome.nix
     ../modules/hypr.nix
     ../modules/llama-cpp.nix
     ../modules/niri.nix
@@ -42,7 +43,10 @@
   universe.hypr.enable = false;
 
   # Plasma desktop
-  universe.plasma.enable = true;
+  universe.plasma.enable = false;
+
+  # GNOME desktop
+  universe.gnome.enable = true;
 
   # Local LLM using llama.cpp
   universe.llama-cpp = {
