@@ -15,6 +15,7 @@ in {
       fractal
       fragments
       ghostty
+      plattenalbum
     ];
 
     dconf = {
