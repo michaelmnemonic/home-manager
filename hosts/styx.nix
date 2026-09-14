@@ -36,17 +36,8 @@
     folders = ["Bilder" "Bücher" "Dokumente" "Manga" "Musik"];
   };
 
-  # Niri wm
-  universe.niri.enable = false;
-
-  # Hyprland wm
-  universe.hypr.enable = false;
-
   # Plasma desktop
-  universe.plasma.enable = false;
-
-  # GNOME desktop
-  universe.gnome.enable = true;
+  universe.plasma.enable = true;
 
   # Local LLM using llama.cpp
   universe.llama-cpp = {
