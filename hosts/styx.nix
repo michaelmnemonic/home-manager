@@ -14,9 +14,10 @@
     ../modules/syncthing.nix
   ];
 
-  home.packages = [
+  home.packages = with pkgs; [
+    plattenalbum
+    signal-desktop
     t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-opencode
-    pkgs.plattenalbum
   ];
 
   age = {
