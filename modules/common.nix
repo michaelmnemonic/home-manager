@@ -154,6 +154,7 @@
       "editor.formatOnSave" = true;
       "editor.wordWrap" = "wordWrapColumn";
       "git.confirmSync" = false;
+      "git.blame.editorDecoration.enabled" = true;
       "git.useIntegratedAskPass" = false;
       "window.commandCenter" = false;
       "workbench.colorTheme" = "Light 2026";
