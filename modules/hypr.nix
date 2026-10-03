@@ -23,6 +23,9 @@ in {
       ".config/hypr/hyprlock.conf".source = ../dotfiles/hypr/hyprlock.conf;
       ".config/hypr/lockscreen.jpg".source = ../assets/lockscreen.jpg;
 
+      # Hypridle
+      ".config/hypr/hypridle.conf".source = ../dotfiles/hypr/hypridle.conf;
+
       # Panel
       ".config/vibepanel/config.toml".source = ../dotfiles/vibepanel/config.toml;
 
@@ -32,6 +35,7 @@ in {
 
     home.packages = with pkgs; [
       elephant
+      hypridle
       hyprlock
       hyprpaper
       playerctl
@@ -49,6 +53,25 @@ in {
       Service = {
         Slice = "session.slice";
         ExecStart = lib.getExe pkgs.hyprpaper;
+        Restart = "on-failure";
+        RestartSec = "10";
+      };
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
+    };
+
+    # Hypridle
+    systemd.user.services.hypridle = {
+      Unit = {
+        Description = "hypridle is an idle management daemon for Hyprland";
+        After = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
+        Requisite = ["graphical-session.target"];
+      };
+      Service = {
+        Slice = "session.slice";
+        ExecStart = lib.getExe pkgs.hypridle;
         Restart = "on-failure";
         RestartSec = "10";
       };
