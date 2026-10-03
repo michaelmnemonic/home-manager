@@ -310,6 +310,10 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
+-- Resize windows with keyboard alone
+hl.bind(mainMod .. "+ Plus", hl.dsp.window.resize({ x = 25, y = 0, relative = true}), { repeating = true })
+hl.bind(mainMod .. "+ udiaeresis", hl.dsp.window.resize({ x = -25, y = 0, relative = true}), { repeating = true })
+
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("vibepanel volume inc 10"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("vibepanel volume dec 10"),      { locked = true, repeating = true })
