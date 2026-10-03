@@ -134,7 +134,7 @@ hl.config({
 
         shadow = {
             enabled      = true,
-            range        = 4,
+            range        = 20,
             render_power = 3,
             color        = 0xee1a1a1a,
         },
@@ -377,4 +377,17 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+-- Firefox Picture-in-Picture: float in bottom right, visible on all workspaces
+hl.window_rule({
+    name  = "firefox-pip",
+    match = { class = "firefox", title = "^(Bild-im-Bild|Picture-in-Picture)$" },
+
+    float        = true,
+    pin          = true,
+    size         = "640 360",
+    move         = {"monitor_w*0.98-window_w", "monitor_h*0.98-window_h"},
+    rounding = 0,
+    border_size = 0,
 })
