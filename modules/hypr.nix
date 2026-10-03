@@ -15,6 +15,10 @@ in {
       # Hyprland
       ".config/hypr/hyprland.lua".source = ../dotfiles/hypr/hyprland.lua;
 
+      # Hyprpaper
+      ".config/hypr/hyprpaper.conf".source = ../dotfiles/hypr/hyprpaper.conf;
+      ".config/hypr/wallpaper.jpg".source = ../assets/wallpaper.jpg;
+
       # Panel
       ".config/vibepanel/config.toml".source = ../dotfiles/vibepanel/config.toml;
 
@@ -24,9 +28,29 @@ in {
 
     home.packages = with pkgs; [
       elephant
+      hyprpaper
       playerctl
       wtype
     ];
+
+    # Hyprpaper
+    systemd.user.services.hyprpaper = {
+      Unit = {
+        Description = "hyprpaper is a fast, IPC-controlled wallpaper utility for Hyprland";
+        After = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
+        Requisite = ["graphical-session.target"];
+      };
+      Service = {
+        Slice = "session.slice";
+        ExecStart = lib.getExe pkgs.hyprpaper;
+        Restart = "on-failure";
+        RestartSec = "10";
+      };
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
+    };
 
     # Vibepanel
     systemd.user.services.vibepanel = {
