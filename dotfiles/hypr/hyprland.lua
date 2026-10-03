@@ -308,6 +308,9 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 -- Music scratchpad
 hl.bind(mainMod .. " + 9", hl.dsp.workspace.toggle_special("music"))
 
+-- Mail scratchpad
+hl.bind(mainMod .. " + 0", hl.dsp.workspace.toggle_special("mail"))
+
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
@@ -406,5 +409,18 @@ hl.window_rule({
     float     = true,
     size      = "1200 800",
     workspace = "special:music",
-    no_shadow = true,9
+    no_shadow = true,
+})
+
+-- Thunderbird: floating mail client in its own "mail" special workspace
+-- Sized/positioned inside the usable area below the top panel (vibepanel, 38px)
+hl.window_rule({
+    name  = "thunderbird-mail",
+    match = { class = "thunderbird" },
+
+    float     = true,
+    size      = {"monitor_w*0.98", "(monitor_h-38)*0.98"},
+    move      = {"monitor_w*0.01", "38+(monitor_h-38)*0.01"},
+    workspace = "special:mail",
+    no_shadow = true,
 })
