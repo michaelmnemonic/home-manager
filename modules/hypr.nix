@@ -19,6 +19,10 @@ in {
       ".config/hypr/hyprpaper.conf".source = ../dotfiles/hypr/hyprpaper.conf;
       ".config/hypr/wallpaper.jpg".source = ../assets/wallpaper.jpg;
 
+      # Hyprlock
+      ".config/hypr/hyprlock.conf".source = ../dotfiles/hypr/hyprlock.conf;
+      ".config/hypr/lockscreen.jpg".source = ../assets/lockscreen.jpg;
+
       # Panel
       ".config/vibepanel/config.toml".source = ../dotfiles/vibepanel/config.toml;
 
@@ -28,6 +32,7 @@ in {
 
     home.packages = with pkgs; [
       elephant
+      hyprlock
       hyprpaper
       playerctl
       wtype

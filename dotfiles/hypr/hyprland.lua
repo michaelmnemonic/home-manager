@@ -287,6 +287,9 @@ hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd(
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
+-- Lock the screen with hyprlock
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
