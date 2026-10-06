@@ -39,6 +39,7 @@ in {
       hyprlock
       hyprpaper
       playerctl
+      resources
       wtype
     ];
 
