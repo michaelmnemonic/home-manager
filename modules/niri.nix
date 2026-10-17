@@ -27,6 +27,7 @@ in {
       elephant
       playerctl
       swaylock
+      thunderbird
       wtype
     ];
 
