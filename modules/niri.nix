@@ -24,6 +24,7 @@ in {
     };
 
     home.packages = with pkgs; [
+      alacritty
       elephant
       playerctl
       swaylock

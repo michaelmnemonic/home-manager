@@ -482,7 +482,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return { spawn "ghostty"; }
+    Mod+Return { spawn "alacritty"; }
     Mod+Space { spawn "walker"; }
     Mod+V {spawn "walker" "-m" "clipboard";}
     Mod+Period {spawn "walker" "-m" "symbols";}
