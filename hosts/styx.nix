@@ -79,6 +79,8 @@
     '';
   };
 
+  universe.kodi.enable = true;
+
   programs.opencode = {
     enable = true;
     settings = {
