@@ -12,12 +12,12 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       (pkgs.kodi-wayland.withPackages (
-        kodiPkgs:
-          with pkgs; [
-            kodiPackages.pvr-iptvsimple
-            kodiPackages.youtube
-            python312Packages.pillow
-          ]
+        kodiPkgs: [
+          kodiPkgs.inputstream-adaptive
+          kodiPkgs.pvr-iptvsimple
+          kodiPkgs.youtube
+          python312Packages.pillow
+        ]
       ))
     ];
   };
