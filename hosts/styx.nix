@@ -8,6 +8,7 @@
     ../modules/common.nix
     ../modules/gnome.nix
     ../modules/hypr.nix
+    ../modules/kodi.nix
     ../modules/llama-cpp.nix
     ../modules/niri.nix
     ../modules/plasma.nix
