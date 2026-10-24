@@ -208,16 +208,6 @@
     };
   };
 
-  programs.kodi = {
-    enable = true;
-    package = pkgs.kodi-wayland.withPackages (
-      kodiPkgs:
-        with pkgs; [
-          python312Packages.pillow
-        ]
-    );
-  };
-
   programs.obsidian.enable = true;
 
   nixpkgs.config.allowUnfreePredicate = pkg:
