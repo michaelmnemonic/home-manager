@@ -21,6 +21,10 @@ in {
 
       # Walker
       ".config/walker/themes/custom/style.css".source = ../dotfiles/walker/themes/custom/style.css;
+
+      # Lockscreen
+      ".config/swaylock/config".source = ../dotfiles/swaylock/config;
+      ".config/swaylock/lockscreen.jpg".source = ../assets/lockscreen.jpg;
     };
 
     home.packages = with pkgs; [
