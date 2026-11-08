@@ -28,12 +28,16 @@ in {
 
       # Idle management
       ".config/swayidle/config".source = ../dotfiles/swayidle/config;
+
+      # Wallpaper management
+      ".config/swaybg/wallpaper.jpg".source = ../assets/wallpaper.jpg;
     };
 
     home.packages = with pkgs; [
       alacritty
       elephant
       playerctl
+      swaybg
       swayidle
       swaylock
       thunderbird
@@ -108,6 +112,25 @@ in {
       Service = {
         Slice = "session.slice";
         ExecStart = lib.getExe pkgs.swayidle;
+        Restart = "on-failure";
+        RestartSec = "10";
+      };
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
+    };
+
+    # Swaybg
+    systemd.user.services.swaybg = {
+      Unit = {
+        Description = "Wallpaper tool for Wayland compositors";
+        After = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
+        Requisite = ["graphical-session.target"];
+      };
+      Service = {
+        Slice = "session.slice";
+        ExecStart = "${lib.getExe pkgs.swaybg} --image /home/maik/.config/swaybg/wallpaper.jpg";
         Restart = "on-failure";
         RestartSec = "10";
       };
