@@ -5,6 +5,9 @@
   ...
 }: let
   cfg = config.universe.niri;
+  wallpaper = pkgs.runCommand "wallpaper.jpg" {} ''
+    cp ${../assets/wallpaper.jpg} $out
+  '';
 in {
   options.universe.niri = {
     enable = lib.mkEnableOption "An opinionated Niri session";
@@ -28,9 +31,6 @@ in {
 
       # Idle management
       ".config/swayidle/config".source = ../dotfiles/swayidle/config;
-
-      # Wallpaper management
-      ".config/swaybg/wallpaper.jpg".source = ../assets/wallpaper.jpg;
     };
 
     home.packages = with pkgs; [
@@ -130,7 +130,7 @@ in {
       };
       Service = {
         Slice = "session.slice";
-        ExecStart = "${lib.getExe pkgs.swaybg} --image /home/maik/.config/swaybg/wallpaper.jpg";
+        ExecStart = "${lib.getExe pkgs.swaybg} --image ${wallpaper}";
         Restart = "on-failure";
         RestartSec = "10";
       };
