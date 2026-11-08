@@ -37,8 +37,6 @@ in {
       alacritty
       elephant
       playerctl
-      swaybg
-      swayidle
       swaylock
       thunderbird
       wtype
