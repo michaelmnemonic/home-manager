@@ -6,6 +6,9 @@ popover_offset = 10
 size = 30
 outline = false
 
+[polkit]
+enabled = true
+
 [widgets]
 left = ["workspaces"]
 center = ["clock"]
