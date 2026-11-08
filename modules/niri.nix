@@ -25,12 +25,16 @@ in {
       # Lockscreen
       ".config/swaylock/config".source = ../dotfiles/swaylock/config;
       ".config/swaylock/lockscreen.jpg".source = ../assets/lockscreen.jpg;
+
+      # Idle management
+      ".config/swayidle/config".source = ../dotfiles/swayidle/config;
     };
 
     home.packages = with pkgs; [
       alacritty
       elephant
       playerctl
+      swayidle
       swaylock
       thunderbird
       wtype
@@ -85,6 +89,25 @@ in {
       Service = {
         Slice = "session.slice";
         ExecStart = lib.getExe pkgs.elephant;
+        Restart = "on-failure";
+        RestartSec = "10";
+      };
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
+    };
+
+    # Swayidle
+    systemd.user.services.swayidle = {
+      Unit = {
+        Description = "Idle manager for Wayland";
+        After = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
+        Requisite = ["graphical-session.target"];
+      };
+      Service = {
+        Slice = "session.slice";
+        ExecStart = lib.getExe pkgs.swayidle;
         Restart = "on-failure";
         RestartSec = "10";
       };

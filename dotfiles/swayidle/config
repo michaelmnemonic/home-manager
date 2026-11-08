@@ -1,0 +1,5 @@
+timeout 300 swaylock
+before-sleep swaylock
+lock swaylock
+unlock swaylock 'pkill --signal SIGUSR1 swaylock'
+idlehint 300
