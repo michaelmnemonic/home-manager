@@ -8,6 +8,7 @@
   wallpaper = pkgs.runCommand "wallpaper.jpg" {} ''
     cp ${../assets/wallpaper.jpg} $out
   '';
+  tomlFormat = pkgs.formats.toml {};
 in {
   options.universe.niri = {
     enable = lib.mkEnableOption "An opinionated Niri session";
@@ -28,6 +29,10 @@ in {
       # Lockscreen
       ".config/swaylock/config".source = ../dotfiles/swaylock/config;
       ".config/swaylock/lockscreen.jpg".source = ../assets/lockscreen.jpg;
+      ".config/veila/config.toml".source = tomlFormat.generate "config.toml" {
+        theme = "normandy";
+        background.path = "${wallpaper}";
+      };
 
       # Idle management
       ".config/swayidle/config".source = ../dotfiles/swayidle/config;
@@ -37,7 +42,6 @@ in {
       alacritty
       elephant
       playerctl
-      swaylock
       thunderbird
       wtype
     ];
@@ -91,25 +95,6 @@ in {
       Service = {
         Slice = "session.slice";
         ExecStart = lib.getExe pkgs.elephant;
-        Restart = "on-failure";
-        RestartSec = "10";
-      };
-      Install = {
-        WantedBy = ["graphical-session.target"];
-      };
-    };
-
-    # Swayidle
-    systemd.user.services.swayidle = {
-      Unit = {
-        Description = "Idle manager for Wayland";
-        After = ["graphical-session.target"];
-        PartOf = ["graphical-session.target"];
-        Requisite = ["graphical-session.target"];
-      };
-      Service = {
-        Slice = "session.slice";
-        ExecStart = lib.getExe pkgs.swayidle;
         Restart = "on-failure";
         RestartSec = "10";
       };

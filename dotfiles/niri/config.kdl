@@ -486,7 +486,7 @@ binds {
     Mod+Space { spawn "walker"; }
     Mod+V {spawn "walker" "-m" "clipboard";}
     Mod+Period {spawn "walker" "-m" "symbols";}
-    Mod+L { spawn "swaylock"; }
+    Mod+L { spawn "veila" "lock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
