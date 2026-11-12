@@ -65,6 +65,20 @@
     };
   };
 
+  # Pi coding agent
+  programs.pi-coding-agent = {
+    enable = true;
+    # pi spawns `npm` to install `npm:` packages, so nodejs (which ships npm/npx)
+    # must be on the wrapped pi binary's PATH
+    extraPackages = [pkgs.nodejs];
+    settings = {
+      packages = [
+        "npm:jayzeng/pi-memory"
+        "npm:pi-rtk-optimizer"
+      ];
+    };
+  };
+
   # mpd
   services.mpd = {
     enable = true;
