@@ -38,8 +38,8 @@
     folders = ["Bilder" "Bücher" "Dokumente" "Manga" "Musik"];
   };
 
-  # Niri compositor
-  universe.niri.enable = true;
+  # Plasma desktop
+  universe.plasma.enable = true;
 
   # Local LLM using llama.cpp
   universe.llama-cpp = {
